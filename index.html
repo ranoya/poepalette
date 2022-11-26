@@ -1,1 +1,298 @@
-Nothing here
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" type="image/ico" href="./favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="./dev/style.css" />
+
+    <title>Poe</title>
+
+    <script src="./dev/datat.js"></script>
+  </head>
+
+  <body>
+    <div class="gridhead">
+      <span class="categoria" style="margin-top: -10px"
+        ><svg
+          height="9"
+          style="vertical-align: baseline"
+          viewBox="0 0 396 292"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M396 169.434L175.83 46.5723L32.1741 116.876L396 169.434Z"
+            fill="var(--text-color, red)"
+          />
+          <path
+            d="M165.56 292L31.4712 196.872L32.3046 115.75L165.56 292Z"
+            fill="var(--text-color, red)"
+          />
+          <path
+            d="M0 77.5271L2.22508 0L74.8348 40.5185L0 77.5271Z"
+            fill="var(--text-color, red)"
+          />
+        </svg>
+        POE<span id="relogio"></span
+      ></span>
+    </div>
+
+    <form autocomplete="off">
+      <input id="entrada" type="text" autocomplete="false" />
+    </form>
+
+    <div id="addons"></div>
+    <div class="gridhead"><span class="separaline"></span></div>
+    <div id="outputs"></div>
+  </body>
+
+  <script>
+    // Input History
+    let capturaentrada = "";
+    let matrizentradas = [""];
+    let matrizi = 1;
+    let matual = 1;
+
+    let listaentradas = function () {
+      clearTimeout(capturaentrada);
+      if (
+        typeof document.getElementsByTagName("input")[0] != "undefined" &&
+        document.getElementsByTagName("input")[0] != null
+      ) {
+        if (document.getElementsByTagName("input")[0].value != "") {
+          document
+            .getElementsByTagName("form")[0]
+            .setAttribute("autocomplete", "false");
+          document
+            .getElementsByTagName("input")[0]
+            .setAttribute("autocomplete", "off");
+          matrizentradas[matrizi] =
+            document.getElementsByTagName("input")[0].value;
+          matual = matrizi;
+          matrizi++;
+          // console.table(matrizentradas);
+        }
+      }
+    };
+
+    document.body.addEventListener("keyup", function (e) {
+      clearTimeout(capturaentrada);
+      // console.log(e.keyCode + " " + e.key);
+      if (e.keyCode == 38) {
+        if (matual > 0) {
+          matual--;
+        }
+        setinput(matrizentradas[matual]);
+        // console.log("matual: " + matual);
+      } else if (e.keyCode == 40) {
+        if (matual <= matrizentradas.length - 1) {
+          matual++;
+          setinput(matrizentradas[matual]);
+          // console.log("matual: " + matual);
+        }
+
+        if (matual == matrizentradas.length) {
+          setinput("");
+        }
+      } else {
+        capturaentrada = setTimeout(listaentradas, 1000);
+      }
+    });
+
+    // Set focus to the input
+    setInterval(function () {
+      document.getElementsByTagName("input")[0].focus();
+    }, 10000);
+
+    // Clock
+    let addzero = function (str) {
+      nstr = str.toString();
+
+      if (str.length <= 1) {
+        nstr = "0" + str;
+      }
+
+      return nstr;
+    };
+
+    let hora = new Date().getHours();
+    let minuto = new Date().getMinutes();
+
+    document.getElementById("relogio").innerHTML =
+      addzero(hora.toString()) +
+      "<span class='tick'>:</span>" +
+      addzero(minuto.toString());
+
+    setInterval(function () {
+      hora = new Date().getHours();
+      minuto = new Date().getMinutes();
+      document.getElementById("relogio").innerHTML =
+        addzero(hora.toString()) +
+        "<span class='tick'>:</span>" +
+        addzero(minuto.toString());
+    }, 60000);
+
+    // Fetch and load Plugins
+    // This fetches all custom plugins
+
+    let customcmd = [];
+
+    if (
+      typeof $_GET["plugins"] != undefined &&
+      $_GET["plugins"] != "" &&
+      $_GET["plugins"] != null
+    ) {
+      fetch($_GET["plugins"])
+        .then((response) => response.json())
+        .then((dados) => {
+          console.table(dados);
+
+          let customplugins = "";
+          for (i = 0; i < dados.length; i++) {
+            customcmd[i] = dados[i].instruction;
+
+            let scrjs = document.createElement("script");
+            scrjs.src = dados[i].js;
+            document.head.appendChild(scrjs);
+          }
+
+          document.getElementById("addons").innerHTML = customplugins;
+        });
+    } else {
+      fetch(
+        "https://opensheet.elk.sh/1u0gd9ciVrm240UPPR8O6nC_4FxJmSr6plXEodh8ar5o/Custom"
+      )
+        .then((response) => response.json())
+        .then((dados) => {
+          console.table(dados);
+
+          let customplugins = "";
+          for (i = 0; i < dados.length; i++) {
+            customcmd[i] = dados[i].instruction;
+
+            let scrjs = document.createElement("script");
+            scrjs.src = dados[i].js;
+            document.head.appendChild(scrjs);
+          }
+
+          document.getElementById("addons").innerHTML = customplugins;
+        });
+    }
+
+    // Fetch JSON
+    // This fetches the data and start filtering results with omnifilter function
+
+    if (
+      typeof $_GET["json"] != undefined &&
+      $_GET["json"] != "" &&
+      $_GET["json"] != null
+    ) {
+      omnifilterfetchdata($_GET["json"], "entrada");
+    } else {
+      omnifilterfetchdata(
+        "https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference",
+        "entrada"
+      );
+    }
+
+    // Processing data filters (this is the real deal!)
+
+    let colecao = [];
+    let categorias = [];
+
+    omnifilter = function (oarr) {
+      document.getElementById("outputs").style.overflow = "auto";
+      colecao = tags(oarr, "Group", ",");
+      categorias = tags(oarr, "Group", ",");
+
+      if (
+        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+          ">" &&
+        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+          "@" &&
+        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+          "/"
+      ) {
+        let code = `<div class="outputgrid">`;
+        let arr = orderby(oarr, categorias, "Group");
+
+        if (arr.length > 10) {
+          for (let c = 0; c < colecao.length; c++) {
+            code += `<span class='categoria'><a href='javascript:setinput("${colecao[c]}")' class='grouplink'>${colecao[c]}</a></span>`;
+
+            for (let l = 0; l < arr.length; l++) {
+              if (arr[l]["cat"] == colecao[c]) {
+                if (arr[l]["Type"] == "self") {
+                  code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+                } else if (arr[l]["Type"] == "embed") {
+                  code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
+                } else {
+                  code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+                }
+              }
+            }
+          }
+        } else {
+          let ultimoregistro = "";
+          code += `<span class='categoria'>`;
+
+          for (let c = 0; c < colecao.length; c++) {
+            code += `<a href='javascript:setinput("${colecao[c]}")' class='grouplink'>${colecao[c]}</a> • `;
+          }
+
+          code += `</span>`;
+
+          for (let l = 0; l < arr.length; l++) {
+            if (arr[l].Link != ultimoregistro) {
+              if (arr[l]["Type"] == "self") {
+                code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+              } else if (arr[l]["Type"] == "embed") {
+                code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
+              } else {
+                code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+              }
+
+              ultimoregistro = arr[l].Link;
+            }
+          }
+        }
+
+        code += `<div>`;
+
+        if (arr.length == 0) {
+          code = "";
+        }
+
+        present(code);
+      } else {
+        let code = "";
+        for (let i = 0; i < customcmd.length; i++) {
+          if (
+            document
+              .getElementsByTagName("input")[0]
+              .value.match("/" + customcmd[i])
+          ) {
+            let patt = new RegExp(customcmd[i] + "(.*)", "i");
+            let extrai = document
+              .getElementsByTagName("input")[0]
+              .value.match(patt);
+
+            if (
+              typeof extrai[1] != "undefined" &&
+              extrai[1] != null &&
+              extrai[1] != ""
+            ) {
+              eval(customcmd[i] + "('" + extrai[1] + "')");
+            }
+          }
+        }
+      }
+    };
+  </script>
+</html>
