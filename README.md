@@ -39,6 +39,8 @@ Example:
 
 If you do not define those variables, POE will come with the default links, default plugins, and default style.
 
+Well... just see for youself: [https://poepalette.vercel.app](https://poepalette.vercel.app).
+
 You can just change the default links, and stay with the default plugins and style... this will work just fine. But for more customization, you can change almost everything in POE.
 
 ## An easy way to fill the JSON data
@@ -47,6 +49,8 @@ We recomend using [opensheet.elk.sh](https://opensheet.elk.sh) to convert data s
 
 The default data used in POE is stored in [this Google Sheet](https://docs.google.com/spreadsheets/d/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/edit#gid=0).
 The converted JSON file by opensheet.elk.sh [is this](https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference).
+
+<img width='100%' src='https://poepalette.vercel.app/docs/googlesheetimg.png' />
 
 Just set your Google Sheet document to "Everybody with the link can view", and give opensheet.elk.sh the Google Document ID (the `1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g` in the Google Sheet URL) plus the name of the spredsheet Tab ("Reference", in the default POE data Google Sheet). This is the complete URL:
 
@@ -65,4 +69,21 @@ The bookmarks json uses four JSON Keys for storing each registry:
 | Group | Tags used to organize bookmarks in categories                                                           | Words (tags), separated by comma (you can use multiple categories for a single bookmark) | documentation,reference,snippets |
 | Type  | How POE will open the link: in a new window, in the same window, or embeding the link inside POE itself | leave it blank for new window, use _self_ for same window and _embed_ for embeding       | self                             |
 
-Any other JSON Keys and data you fill in your JSON file or Google Sheet will be searchable by POE, and will be found by the query. So, if you want complementary information about your links to help find things, just create more Keys/Columns in your data and fill it with what you want.
+Any other JSON Keys and data you fill in your JSON file or Google Sheet will be searchable by POE, and will be found by the query. So, if you want complementary information about your links to help find things, just create more Keys/Columns in your data and fill it with what you want (and this a life saver with long lists, since relative and reference words will bring the link up for you. Do it and thank me later...)
+
+## Plugins data structure
+
+The plugins json is even more simplier: just two JSON Keys.
+
+| Key         | Description                                                                        | Type of Data               | Example                                   |
+| ----------- | ---------------------------------------------------------------------------------- | -------------------------- | ----------------------------------------- |
+| instruction | the name of the function to be called in POE and executed (it have to be the same) | a javascript function name | groups                                    |
+| js          | the URL of a javascript file containing the function                               | Just a URL                 | https://poepalette.vercel.ap/dev/games.js |
+
+To use a plugin inside POE, just type "/" and the name of the desired function.
+
+For instance, two plugins comes with the default data: _/groups_ and _/params_.
+
+If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the booksmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
+
+Another example of plugin can be loaded with a different [plugins JSON](https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) from [this spreadsheet](https://docs.google.com/spreadsheets/d/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/edit#gid=0). This one have a _/games [string]_ that will search for online games in a [thrid/external spreadsheet/JSON](https://docs.google.com/spreadsheets/d/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/edit#gid=0)! And if you have basic knowledge of javascript, writing these kind of plugins is an easily job.
