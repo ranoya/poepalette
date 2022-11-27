@@ -53,7 +53,7 @@ If you type _/groups [string]_ in POE with the default data and plugins, it will
 
 You can create your own plugins to extend functionalities of POE.
 
-If you want to see a nice way to use plugins, load [this version](https://poepalette.vercel.app?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) with the _/Game_ plugin, and type _/game fps_.
+If you want to see a nice way to use plugins, load [this version](https://poepalette.vercel.app?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) with the _/Games_ plugin, and type _/games fps_.
 
 ## An easy way to fill the JSON data
 
