@@ -43,6 +43,16 @@ Well... just see for youself: [https://poepalette.vercel.app](https://poepalette
 
 You can just change the default links, and stay with the default plugins and style... this will work just fine. But for more customization, you can change almost everything in POE.
 
+## Using Plugins
+
+To use a plugin inside POE, just type "/" and the name of the desired function loaded with the plugins.
+
+Two plugins (_/groups_ and _/params_) comes with the default data for example purposes, and a third one can be loaded with a specific plugins JSON already avaliable.
+
+If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the booksmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
+
+You can create your own plugins to extend functionalities of POE.
+
 ## An easy way to fill the JSON data
 
 We recomend using [opensheet.elk.sh](https://opensheet.elk.sh) to convert data stored in a Google Sheets document into JSON, on the fly. We use that in the default data for POE.
@@ -148,7 +158,7 @@ If you type _/groups [string]_ in POE with the default data and plugins, it will
 ]
 ```
 
-Another example of plugin can be loaded with a different [plugins JSON](https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) from [this spreadsheet](https://docs.google.com/spreadsheets/d/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/edit#gid=0). This one have a _/games [string]_ that will search for online games in a [thrid/external spreadsheet/JSON](https://docs.google.com/spreadsheets/d/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/edit#gid=0)!
+Another example of plugin can be loaded with a different [plugins JSON](https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) from [this spreadsheet](https://docs.google.com/spreadsheets/d/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/edit#gid=0). This one have a _/games [string]_ that will search for online games in a [thrid/external spreadsheet/JSON](https://docs.google.com/spreadsheets/d/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/edit#gid=0) below!
 
 ![Google Sheet used to include games plugin](https://poepalette.vercel.app/docs/googlesheetgamesimg.png)
 
