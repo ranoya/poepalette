@@ -22,7 +22,7 @@ The last function in the code, the _present()_ puts the HTML code your plugin ge
 
 ## Something more useful
 
-So, let's see the _/Games [string] _ function, that will load a differente JSON/Spreadsheet, and search for links there (you can use POE with the _/Games_ plugin loaded, in [this link](https://poepalette.vercel.app/?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) ):
+So, let's see the _/Games_ function, that will load a differente JSON/Spreadsheet, and search for links there (you can use POE with the _/Games_ plugin loaded, in [this link](https://poepalette.vercel.app/?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) ):
 
 ```js
 let games = function (par) {
