@@ -1,6 +1,6 @@
 # Usign POE
 
-Two ways of using POE:
+Two ways to use POE:
 
 1. Cloning the [github repo](https://github.com/ranoya/poepalette), and implementing it where (and how) you want.
 2. Using the [POE instance in Vercel](https://poepalette.vercel.app) with your own data (nothing is collected).

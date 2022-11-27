@@ -4,7 +4,7 @@ let setinput = function (n) {
         document.getElementsByTagName("input")[0].value = n;
         document
           .getElementsByTagName("input")[0]
-          .dispatchEvent(new Event("input", { bubbles: true }));
+            .dispatchEvent(new Event("input", { bubbles: true }));
 };
 
 

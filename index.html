@@ -43,9 +43,7 @@
       ></span>
     </div>
 
-    <form autocomplete="off">
-      <input id="entrada" type="text" autocomplete="false" />
-    </form>
+    <input id="entrada" type="text" autocomplete="false" />
 
     <div id="addons"></div>
     <div class="gridhead"><span class="separaline"></span></div>
@@ -66,9 +64,6 @@
         document.getElementsByTagName("input")[0] != null
       ) {
         if (document.getElementsByTagName("input")[0].value != "") {
-          document
-            .getElementsByTagName("form")[0]
-            .setAttribute("autocomplete", "false");
           document
             .getElementsByTagName("input")[0]
             .setAttribute("autocomplete", "off");

@@ -10,17 +10,17 @@ When you get used to it, you want everything to start working just like that.
 
 POE is just that for handling all your web bookmarks. I'm sure you have a long list of them, don't you?... going back to the Del.ici.ous days, I assume...
 
-## And this is not all...
+## And that's not all...
 
 POE is also extensible. You can code your own javascript functions to trigger within it, and render whatever you want within it. From the latest news available in the RSS feeds of your favorite websites, to information from other databases that you may find useful.
 
 ## Don't worry
 
-Everything is free, and always will be, while it's not used for commercial purpouses. The code is open source, and it's avaliable at [Github](https://www.github.com/ranoya/poepalette).
+Everything is free, and always will be, as long as it is not used for commercial purposes. The code is open source and available on [Github](https://www.github.com/ranoya/poepalette).
 
 # Usign POE
 
-Two ways of using POE:
+Two ways to use POE:
 
 1. Cloning the [github repo](https://github.com/ranoya/poepalette), and implementing it where (and how) you want.
 2. Using the [POE instance in Vercel](https://poepalette.vercel.app) with your own data (nothing is collected).
