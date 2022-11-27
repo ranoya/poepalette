@@ -35,7 +35,7 @@ let games = function (par) {
       let xpto = `<div class="outputgrid">`;
 
       for (let i = 0; i < newarr.length; i++) {
-        xpto += `<a target='_blank' href='javascript:setinput("${newarr[i].link}")'>${newarr[i].game}`;
+        xpto += `<a target='_blank' href='${newarr[i].link}'>${newarr[i].game}`;
       }
 
       xpto += `</div>`;
