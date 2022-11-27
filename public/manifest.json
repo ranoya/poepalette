@@ -1,0 +1,16 @@
+{
+  "short_name": "POE",
+  "name": "Poe Bookmarks",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "256x256 48x48 16x16",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#000000"
+}
