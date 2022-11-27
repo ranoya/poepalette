@@ -29,7 +29,7 @@ To use a plugin inside POE, just type "/" and the name of the desired function l
 
 Two plugins (_/groups_ and _/params_) comes with the default data for example purposes, and a third one can be loaded with a specific plugins JSON already avaliable.
 
-If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the booksmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
+If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the bookmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
 
 You can create your own plugins to extend functionalities of POE.
 
@@ -52,7 +52,7 @@ With this tool, you can easily change and manage all the links and plugins used 
 
 [Bookmarks data structure](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/json.md&embed=plain)
 
-[Plugins structure](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/json.md&embed=plain)
+[Plugins structure](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/plugins.md&embed=plain)
 
 ## CSS customization
 

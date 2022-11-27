@@ -49,7 +49,7 @@ To use a plugin inside POE, just type "/" and the name of the desired function l
 
 Two plugins (_/groups_ and _/params_) comes with the default data for example purposes, and a third one can be loaded with a specific plugins JSON already avaliable.
 
-If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the booksmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
+If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the bookmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
 
 You can create your own plugins to extend functionalities of POE.
 
@@ -132,6 +132,8 @@ The bookmarks json uses four JSON Keys for storing each registry:
 | Type  | How POE will open the link: in a new window, in the same window, or embeding the link inside POE itself | leave it blank for new window, use _self_ for same window and _embed_ for embeding       | self                             |
 
 Any other JSON Keys and data you fill in your JSON file or Google Sheet will be searchable by POE, and will be found by the query. So, if you want complementary information about your links to help find things, just create more Keys/Columns in your data and fill it with what you want (and this a life saver with long lists, since relative and reference words will bring the link up for you. Do it and thank me later...)
+
+Just look into the JSON data that the link "This data (in Spreedsheet)" has and Key "Other Info 2" filled with the information "Source List". So, if you type "Source L" in POE with the default data, the "This data (in Spreedsheet)" will show up.
 
 ## Plugins data structure
 
