@@ -59,3 +59,7 @@ With this tool, you can easily change and manage all the links and plugins used 
 ## CSS customization
 
 [CSS variables](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/css.md&embed=plain)
+
+## Writing plugins
+
+[First steps](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/writeplugins.md&embed=plain)
