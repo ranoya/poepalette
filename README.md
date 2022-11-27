@@ -50,7 +50,7 @@ We recomend using [opensheet.elk.sh](https://opensheet.elk.sh) to convert data s
 The default data used in POE is stored in [this Google Sheet](https://docs.google.com/spreadsheets/d/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/edit#gid=0).
 The converted JSON file by opensheet.elk.sh [is this](https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference).
 
-<img width='100%' src='https://poepalette.vercel.app/docs/googlesheetimg.png' />
+![Google Sheet used in the default data](https://poepalette.vercel.app/docs/googlesheetimg.png)
 
 Just set your Google Sheet document to "Everybody with the link can view", and give opensheet.elk.sh the Google Document ID (the `1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g` in the Google Sheet URL) plus the name of the spredsheet Tab ("Reference", in the default POE data Google Sheet). This is the complete URL:
 
