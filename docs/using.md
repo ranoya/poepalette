@@ -33,6 +33,8 @@ If you type _/groups [string]_ in POE with the default data and plugins, it will
 
 You can create your own plugins to extend functionalities of POE.
 
+If you want to see a nice way to use plugins, load [this version](https://poepalette.vercel.app?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) with the _/Game_ plugin, and type _/game fps_.
+
 ## An easy way to fill the JSON data
 
 We recomend using [opensheet.elk.sh](https://opensheet.elk.sh) to convert data stored in a Google Sheets document into JSON, on the fly. We use that in the default data for POE.
