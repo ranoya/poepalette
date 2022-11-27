@@ -4,7 +4,7 @@
 
 Everyone who uses a modern text editor for coding is familiar with a Command Palette, right? (...right???)
 
-If you don't know what a Command Palette is, it started with [Sublime Text](https://www.sublimetext.com/). Pressing CTRL+SHIFT+P (or CMD+SHIFT+P on Macs) on Sublime would brings up a modal window where you could just start typing what you need and everything related would appear. The need to wonder where all the options and tools were in the menu have ended there.
+If you don't know what a Command Palette is, it started with [Sublime Text](https://www.sublimetext.com/). Pressing CTRL+SHIFT+P (or CMD+SHIFT+P on Macs) on Sublime (or VSCode too) would brings up a modal window where you could just start typing what you need and everything related would appear. The need to wonder where all the options and tools were in the menu have ended there.
 
 When you get used to it, you want everything to start working just like that.
 
@@ -56,7 +56,59 @@ Just set your Google Sheet document to "Everybody with the link can view", and g
 
 `https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference`
 
-With this tool, you can easily change and manage all the links and plugins used in POE.
+With this tool, you can easily change and manage all the links and plugins used in POE. It will create the JSON below for you:
+
+```json
+[
+  {
+    "Name": "Using POE",
+    "Link": "https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/using.md&embed=plain",
+    "Group": "Docs",
+    "Type": "embed"
+  },
+  {
+    "Name": "Working App",
+    "Link": "https://poepalette.vercel.app",
+    "Group": "Apps",
+    "Type": "self"
+  },
+  {
+    "Name": "Working App with Games Plugin",
+    "Link": "https://poepalette.vercel.app?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom",
+    "Group": "Apps, Examples",
+    "Type": "self",
+    "Other Info 1": "Games plugin installed"
+  },
+  {
+    "Name": "This data (in Spreedsheet)",
+    "Link": "https://docs.google.com/spreadsheets/d/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/edit#gid=0",
+    "Group": "Data",
+    "Type": "",
+    "Other Info 1": "Google Sheets",
+    "Other Info 2": "Source List"
+  },
+  {
+    "Name": "GitHub",
+    "Link": "https://github.com/ranoya/poepalette",
+    "Group": "Apps, Code, Source"
+  },
+  {
+    "Name": "Latin America University Rankings",
+    "Link": "https://www.timeshighereducation.com/world-university-rankings/2021/latin-america-university-rankings#!/page/0/length/25/sort_by/rank/sort_order/asc/cols/undefined",
+    "Group": "Other Examples, University, Rankings"
+  },
+  {
+    "Name": "Research Gate",
+    "Link": "https://www.researchgate.net/",
+    "Group": "Other Examples, University"
+  },
+  {
+    "Name": "OrcID",
+    "Link": "http://orcid.org",
+    "Group": "Other Examples, University"
+  }
+]
+```
 
 ## The data structure
 
@@ -87,6 +139,14 @@ For instance, two plugins comes with the default data: _/groups_ and _/params_.
 If you type _/groups [string]_ in POE with the default data and plugins, it will show all the categories organizing the booksmarks; if you type _/params [string]_ it will echo the _[string]_ you write.
 
 ![Google Sheet used to include games plugin](https://poepalette.vercel.app/docs/googlesheetpluginsimg.png)
+
+```json
+[
+  { "instruction": "params", "js": "./dev/showparams.js" },
+  { "instruction": "groups", "js": "./dev/groups.js" },
+  { "instruction": "games", "js": "./dev/games.js" }
+]
+```
 
 Another example of plugin can be loaded with a different [plugins JSON](https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) from [this spreadsheet](https://docs.google.com/spreadsheets/d/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/edit#gid=0). This one have a _/games [string]_ that will search for online games in a [thrid/external spreadsheet/JSON](https://docs.google.com/spreadsheets/d/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/edit#gid=0)!
 
