@@ -8,6 +8,10 @@
   --scroll-track: #00078a;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #2de6ef;
+}
+
 a:hover {
   color: var(--color-hover, #e6be10);
   background-color: white;
