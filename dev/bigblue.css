@@ -1,0 +1,15 @@
+:root {
+  --bg-color: #000cd0;
+  --line-separator: #efe8d6;
+  --text-color: #2de6ef;
+  --color-link: #c1c1c1;
+  --color-hover: #000cd0;
+  --input-text: #dadada;
+  --scroll-track: #ffffff00;
+}
+
+a:hover {
+  color: var(--color-hover, #e6be10);
+  background-color: var(--color-link, #c1c1c1);
+  cursor: pointer;
+}
