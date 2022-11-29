@@ -335,12 +335,15 @@
           code = "";
         }
 
-        if (oarr.match(/^[0-9 \+\*\/\-\(\)\ˆ\%\.]+[0-9\)]$/)) {
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.match(/^[0-9 \+\*\/\-\(\)\ˆ\%\.]+[0-9\)]$/)
+        ) {
           try {
-            let potencia = oarr.replace(
-              /([0-9]+)(\ˆ)([0-9]+)/gim,
-              "Math.pow($1,$3)"
-            );
+            let potencia = document
+              .getElementsByTagName("input")[0]
+              .value.replace(/([0-9]+)(\ˆ)([0-9]+)/gim, "Math.pow($1,$3)");
             let xpto = potencia.match(/.*/);
             code = "= " + eval(xpto[0]);
           } catch (error) {}
