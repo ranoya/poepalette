@@ -196,14 +196,16 @@
       $_GET["title"] != null
     ) {
       let titltag = document.createElement("title");
-      titltag.createTextNode(decodeURI($_GET["title"]));
+      let titcontent = document.createTextNode(decodeURI($_GET["title"]));
+      titltag.appendChild(titcontent);
       document.head.appendChild(titltag);
       document.getElementById("maintitle").innerHTML = decodeURI(
         $_GET["title"]
       );
     } else {
       let titltag = document.createElement("title");
-      titltag.createTextNode("POE");
+      let titcontent = document.createTextNode("POE");
+      titltag.appendChild(titcontent);
       document.head.appendChild(titltag);
       document.getElementById("maintitle").innerHTML = "POE";
     }
