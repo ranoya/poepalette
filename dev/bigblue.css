@@ -5,7 +5,7 @@
   --color-link: #c1c1c1;
   --color-hover: #000cd0;
   --input-text: #dadada;
-  --scroll-track: #00078a;
+  --scroll-track: #00078a00;
 }
 
 ::-webkit-scrollbar-thumb:hover {
