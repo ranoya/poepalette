@@ -36,6 +36,9 @@
   top: calc(25vh - 20px);
   background-color: var(--bg-color, #000000);
   color: var(--text-color, #a7caca);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 #entrada {

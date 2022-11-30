@@ -29,6 +29,7 @@ let toggle = function (who) {
     keymapping[75] = false;
     keymapping[80] = false;
     keymapping[16] = false;
+    document.getElementById("entrada").focus();
   } else {
     document.getElementById(who).style.display = "none";
     keymapping[93] = false;
