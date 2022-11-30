@@ -1,3 +1,9 @@
+# Page and menu title
+
+You can change them with the variable _title_ in the URL:
+
+`https://poepalette.vercel.app/?title=Hello`
+
 # CSS Variables
 
 If you want to create a theme color for POE, you just need to set a few variables in a CSS file, and put it online:
@@ -26,6 +32,6 @@ Create a new CSS file with just the _:root_ selector and the variables you want 
 
 `https://poepalette.vercel.app/?css=https://poepalette.vercel.app/dev/solarized.css`
 
-## Customizing morte than that
+## Customizing more than that
 
 If you want to change more, like fonts, sizes, or grids, feel free to overwrite any selector in the original css. You can see all the classes and selectors used by POE at it's CSS file [here](https://poepalette.vercel.app/dev/style.css).
