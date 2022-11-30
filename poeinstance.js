@@ -4,6 +4,25 @@ let matrizentradas = [""];
 let matrizi = 1;
 let matual = 1;
 
+var keymapping = {}; // You could also use an array
+onkeydown = onkeyup = function(e){
+    e = e || event;
+    keymapping[e.keyCode] = e.type == 'keydown';
+
+    // ctrl+shift+p
+    if (map[93] && map[80] && map[16]) {
+      toggle("poeinst");
+    }
+  
+}
+
+let toggle = function (who) {
+  if (document.getElementById(who).style.display == "none") {
+    document.getElementById(who).style.display = "block";
+  } else {
+    document.getElementById(who).style.display = "none";
+  }
+}
 
 let startpoe = function (json, css, plugins) {
 
