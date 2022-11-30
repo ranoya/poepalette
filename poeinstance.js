@@ -153,11 +153,11 @@ let createpoe = function (json, css, plugins) {
             for (let l = 0; l < arr.length; l++) {
               if (arr[l]["cat"] == colecao[c]) {
                 if (arr[l]["Type"] == "self") {
-                  code += `<a target='_self' href='${decodeURI(arr[l].Link)}' class='linksrecursos'>${arr[l].Name}</a>`;
+                  code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
                 } else if (arr[l]["Type"] == "embed") {
-                  code += `<a target='_self' href='javascript:embed("${decodeURI(arr[l].Link)}")' class='linksrecursos'>${arr[l].Name}</a>`;
+                  code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
                 } else {
-                  code += `<a target='_blank' href='${decodeURI(arr[l].Link)}' class='linksrecursos'>${arr[l].Name}</a>`;
+                  code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
                 }
               }
             }
