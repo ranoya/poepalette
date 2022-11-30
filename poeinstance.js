@@ -216,7 +216,7 @@ let createpoe = function (json, css, plugins) {
           
           for (let i = 0; i < customcmd.length; i++) {
 
-            code += `<a href='javascript:setinput("/${customcmd[i]}")'>${customcmd[i]}</a>`;
+            code += `<a href='javascript:setinput("/${customcmd[i]} ")'>${customcmd[i]}</a>`;
             
           }
 
@@ -256,8 +256,10 @@ let createpoe = function (json, css, plugins) {
 let setinput = function (n) {
         document.getElementById("entrada").value = n;
         document
-          .getElementsByTagName("input")[0]
-            .dispatchEvent(new Event("input", { bubbles: true }));
+          .getElementById("entrada")
+          .dispatchEvent(new Event("input", { bubbles: true }));
+        document.getElementById("entrada").focus();
+        
 };
 
 

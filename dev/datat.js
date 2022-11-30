@@ -5,6 +5,7 @@ let setinput = function (n) {
         document
           .getElementsByTagName("input")[0]
             .dispatchEvent(new Event("input", { bubbles: true }));
+        document.getElementsByTagName("input")[0].focus();
 };
 
 
