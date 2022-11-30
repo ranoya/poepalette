@@ -6,6 +6,7 @@
   --color-hover: #34f8d1;
   --input-text: #cfeceb;
   --scroll-track: #ffffff00;
+  --color-shadow: #00000044;
 }
 
 #outputs::-webkit-scrollbar {
@@ -33,12 +34,14 @@
   position: fixed;
   z-index: 9999999999;
   left: calc(35vw - 20px);
-  top: calc(25vh - 20px);
+  top: calc(18vh - 20px);
   background-color: var(--bg-color, #000000);
   color: var(--text-color, #a7caca);
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 25px 5px var(--color-shadow);
 }
 
 #entrada {
