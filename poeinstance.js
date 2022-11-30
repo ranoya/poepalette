@@ -217,6 +217,8 @@ let createpoe = function (json, css, plugins) {
             code += `<a href='javascript:setinput("/${customcmd[i]}")'>${customcmd[i]}</a>`;
             
           }
+
+          present(code);
           
         }
 
