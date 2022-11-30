@@ -68,6 +68,7 @@ input {
   margin-left: -20px;
   color: var(--fg-color, #d2d2d2);
   overflow-y: auto;
+  padding-top: 3px;
 }
 
 #outputs iframe {
@@ -107,6 +108,7 @@ input {
   text-decoration: none;
   color: var(--text-color, #bbbbbb);
   font-size: 11px;
+  display: inline-block;
 }
 
 .grouplink:hover {

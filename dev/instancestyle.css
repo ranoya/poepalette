@@ -30,7 +30,7 @@
   width: calc(30vw - 40px);
   height: calc(50vh - 40px);
   padding: 20px;
-  display: block;
+  display: none;
   position: fixed;
   z-index: 9999999999;
   left: calc(35vw - 20px);
@@ -69,6 +69,7 @@
   margin-left: -20px;
   color: var(--fg-color, #d2d2d2);
   overflow-y: auto;
+  padding-top: 3px;
 }
 
 #outputs iframe {
@@ -87,7 +88,7 @@
   display: grid;
   grid-template-columns: 1fr [fim];
   gap: 3px 10px;
-  width: calc(100% - 50px);
+  width: calc(100% - 40px);
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 20px;
@@ -108,6 +109,7 @@
   text-decoration: none;
   color: var(--text-color, #bbbbbb);
   font-size: 11px;
+  display: inline-block;
 }
 
 .grouplink:hover {
