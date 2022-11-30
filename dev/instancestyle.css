@@ -1,5 +1,123 @@
+:root {
+  --bg-color: #000000;
+  --line-separator: #514d4d;
+  --text-color: #a7caca;
+  --color-link: #bdb5b5;
+  --color-hover: #34f8d1;
+  --input-text: #cfeceb;
+  --scroll-track: #ffffff00;
+}
+
 #poeinst {
+  width: calc(30vw - 40px);
+  height: calc(50vh - 40px);
+  padding: 20px;
+  display: block;
+  position: fixed;
+  z-index: 9999999999;
+  left: calc(35vw - 20px);
+  top: calc(25vh - 20px);
+  background-color: var(--bg-color, #000000);
+  color: var(--text-color, #a7caca);
 }
 
 #entrada {
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  min-width: 0;
+  height: 100px;
+  font-size: 24px !important;
+  line-height: 30px;
+  width: 100% !important;
+  border: 0;
+  outline: 0;
+  margin-left: -10px;
+  background-color: transparent;
+  color: var(--input-text, #443535);
+  margin-bottom: -10px;
+}
+
+#outputs {
+  width: calc(100% + 40px);
+  height: calc(50vh - 176px);
+  display: block;
+  margin-left: -20px;
+  color: var(--fg-color, #d2d2d2);
+  overflow-y: auto;
+}
+
+#outputs iframe {
+  width: 100%;
+  height: calc(100vh - 160px);
+}
+
+.gridhead {
+  display: grid;
+  grid-template-columns: 1fr [fim];
+  gap: 3px 10px;
+  text-transform: uppercase;
+}
+
+.outputgrid {
+  display: grid;
+  grid-template-columns: 1fr [fim];
+  gap: 3px 10px;
+  width: calc(100% - 50px);
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+}
+
+.categoria {
+  grid-column: 1 / Span 4;
+  margin-top: 16px;
+  border-bottom: 1px solid var(--line-separator, #dddddd);
+  color: var(--text-color, #bbbbbb);
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.grouplink {
+  padding: 4px 8px 4px 8px;
+  margin: -4px -8px -4px -8px;
+  text-decoration: none;
+  color: var(--text-color, #bbbbbb);
+  font-size: 11px;
+}
+
+.grouplink:hover {
+  background-color: var(--text-color, #bbbbbb);
+  color: var(--bg-color, black);
+}
+
+.separaline {
+  grid-column: 1 / fim;
+  margin-top: 16px;
+  border-top: 1px solid var(--line-separator, #dddddd);
+  color: var(--text-color, #bbbbbb);
+  text-transform: uppercase;
+  font-size: 11px;
+  height: 20px;
+}
+
+.noline {
+  grid-column: 1 / fim;
+  margin-top: 16px;
+  color: var(--text-color, #bbbbbb);
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link, #3498c7);
+  padding: 4px 8px 4px 8px;
+  margin: -4px -8px -4px -8px;
+}
+
+a:hover {
+  color: var(--color-hover, #e6be10);
+  cursor: pointer;
 }

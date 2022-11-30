@@ -125,7 +125,7 @@ input {
 }
 
 .noline {
-  grid-column: 1 / Span 4;
+  grid-column: 1 / fim;
   margin-top: 16px;
   color: var(--text-color, #bbbbbb);
   text-transform: uppercase;
