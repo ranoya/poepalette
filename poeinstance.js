@@ -13,6 +13,7 @@ onkeydown = onkeyup = function(e){
   if ((keymapping[93] || keymapping[91]) && keymapping[80] && keymapping[16] || (keymapping[93] || keymapping[91]) && keymapping[75]) {
     keymapping[93] = false;
     keymapping[91] = false;
+    console.log(keymapping);
       toggle("poeinst");
     }
   
