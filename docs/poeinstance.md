@@ -2,7 +2,7 @@
 
 Poe Instance is a simple way to implement POE inside any website. You can see it [running here](https://poepalette.vercel.app/docs/poeinstanceexample.html).
 
-To implement POE Instance in your website, you can use the javascript code below, where _JSON_ is the URL of your links, _CSS_ is the URL for style customization (it's optional), and _plugins_ is the URL to include Plugins (also optional):
+To implement POE Instance in your website, you can use the javascript code below, where _JSON_ is the URL of your links, _CSS_ is the URL for style customization (it's optional), and _PLUGINS_ is the URL to include Plugins (also optional):
 
 ```html
 <script src="https://poepalette.vercel.app/poeinstance.js"></script>
