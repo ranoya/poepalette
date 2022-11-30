@@ -8,6 +8,23 @@
   --scroll-track: #ffffff00;
 }
 
+#outputs::-webkit-scrollbar {
+  width: 10px;
+  margin-right: 5px;
+}
+
+#outputs::-webkit-scrollbar-track {
+  background: var(--scroll-track, #ffffff77);
+}
+
+#outputs::-webkit-scrollbar-thumb {
+  background: var(--color-link, #bdb5b5);
+}
+
+#outputs::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hover, #34f8d1);
+}
+
 #poeinst {
   width: calc(30vw - 40px);
   height: calc(50vh - 40px);
@@ -27,7 +44,7 @@
   padding-right: 8px;
 
   min-width: 0;
-  height: 100px;
+  height: 50px;
   font-size: 24px !important;
   line-height: 30px;
   width: 100% !important;
@@ -41,7 +58,7 @@
 
 #outputs {
   width: calc(100% + 40px);
-  height: calc(50vh - 176px);
+  height: calc(50vh - 126px);
   display: block;
   margin-left: -20px;
   color: var(--fg-color, #d2d2d2);
@@ -71,7 +88,7 @@
 }
 
 .categoria {
-  grid-column: 1 / Span 4;
+  grid-column: 1 / fim;
   margin-top: 16px;
   border-bottom: 1px solid var(--line-separator, #dddddd);
   color: var(--text-color, #bbbbbb);
