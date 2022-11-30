@@ -22,8 +22,9 @@ onkeydown = onkeyup = function(e){
   
 }
 
+
 let toggle = function (who) {
-  if (document.getElementById(who).style.display == "none") {
+  if (document.getElementById(who).style.display == "none" || document.getElementById(who).style.display == "") {
     document.getElementById(who).style.display = "block";
     keymapping[93] = false;
     keymapping[91] = false;
