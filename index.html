@@ -374,6 +374,18 @@
         present(code);
       } else {
         let code = "";
+
+        if (document.getElementsByTagName("input")[0].value == "/") {
+          code += `<div class="outputgrid">`;
+
+          for (let i = 0; i < customcmd.length; i++) {
+            code += `<a href='javascript:setinput("/${customcmd[i]}")'>${customcmd[i]}</a>`;
+          }
+
+          code += `</div>`;
+          present(code);
+        }
+
         for (let i = 0; i < customcmd.length; i++) {
           if (
             document

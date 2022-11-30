@@ -212,12 +212,15 @@ let createpoe = function (json, css, plugins) {
         if (document.getElementById("entrada")
           .value == "/") {
           
+          code += `<div class="outputgrid">`
+          
           for (let i = 0; i < customcmd.length; i++) {
 
             code += `<a href='javascript:setinput("/${customcmd[i]}")'>${customcmd[i]}</a>`;
             
           }
 
+          code += `</div>`
           present(code);
           
         }
