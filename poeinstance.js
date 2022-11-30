@@ -135,11 +135,11 @@ let createpoe = function (json, css, plugins) {
       categorias = tags(oarr, "Group", ",");
 
       if (
-        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+        document.getElementById("entrada").value.toString().charAt(0) !=
           ">" &&
-        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+        document.getElementById("entrada").value.toString().charAt(0) !=
           "@" &&
-        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+        document.getElementById("entrada").value.toString().charAt(0) !=
           "/"
       ) {
         let code = `<div class="outputgrid">`;
@@ -241,7 +241,7 @@ let createpoe = function (json, css, plugins) {
 // Change the input value
 
 let setinput = function (n) {
-        document.getElementsByTagName("input")[0].value = n;
+        document.getElementById("entrada").value = n;
         document
           .getElementsByTagName("input")[0]
             .dispatchEvent(new Event("input", { bubbles: true }));
