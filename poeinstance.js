@@ -26,7 +26,7 @@ let createpoe = function (json, css, plugins) {
 
     let poeblock = document.createElement("div");
     poeblock.id = "poeinst";
-    document.body.appendChild(poeinst);
+    document.body.appendChild(poeblock);
 
     let customcmd = [];
 
@@ -59,7 +59,7 @@ let createpoe = function (json, css, plugins) {
     omnifilterfetchdata(json, "entrada");
 }
 
-
+/*
     document.body.addEventListener("keyup", function (e) {
       clearTimeout(capturaentrada);
       // console.log(e.keyCode + " " + e.key);
@@ -83,7 +83,7 @@ let createpoe = function (json, css, plugins) {
         capturaentrada = setTimeout(listaentradas, 1000);
       }
     });
-
+*/
 
 
     // Processing data filters (this is the real deal!)
