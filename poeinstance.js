@@ -8,9 +8,9 @@ let datt = document.createElement("script");
 datt.src = "https://poepalette.vercel.app/dev/datat.js"
 document.head.appendChild(datt);
 
-let createpoe = function (json, css, plugins) {
+let startpoe = function (json, css, plugins) {
 
-    let lnkcss = document.createElement("link");
+  let lnkcss = document.createElement("link");
     lnkcss.href = "https://poepalette.vercel.app/dev/instancestyle.css";
     lnkcss.type = "text/css";
     lnkcss.rel = "stylesheet";
@@ -23,6 +23,32 @@ let createpoe = function (json, css, plugins) {
         customcss.rel = "stylesheet";
         document.head.appendChild(customcss);
     }
+  
+    if (
+        typeof plugins != undefined &&
+        plugins != "" &&
+        plugins != null
+      ) {
+        fetch(plugins)
+          .then((response) => response.json())
+          .then((dados) => {
+            console.table(dados);
+
+            for (i = 0; i < dados.length; i++) {
+              customcmd[i] = dados[i].instruction;
+
+              let scrjs = document.createElement("script");
+              scrjs.src = dados[i].js;
+              document.head.appendChild(scrjs);
+            }
+
+          });
+      }
+  
+  window.onload = createpoe(json, css, plugins);
+}
+
+let createpoe = function (json, css, plugins) {
 
     let poeblock = document.createElement("div");
     poeblock.id = "poeinst";
@@ -35,26 +61,7 @@ let createpoe = function (json, css, plugins) {
     <div class="gridhead"><span class="separaline"></span></div>
     <div id="outputs"></div>`;
 
-    if (
-      typeof plugins != undefined &&
-      plugins != "" &&
-      plugins != null
-    ) {
-      fetch(plugins)
-        .then((response) => response.json())
-        .then((dados) => {
-          console.table(dados);
-
-          for (i = 0; i < dados.length; i++) {
-            customcmd[i] = dados[i].instruction;
-
-            let scrjs = document.createElement("script");
-            scrjs.src = dados[i].js;
-            document.head.appendChild(scrjs);
-          }
-
-        });
-    }
+    
 
     omnifilterfetchdata(json, "entrada");
 }
