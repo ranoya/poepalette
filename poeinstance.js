@@ -3,6 +3,7 @@ let capturaentrada = "";
 let matrizentradas = [""];
 let matrizi = 1;
 let matual = 1;
+let customcmd = [];
 
 var keymapping = {}; // You could also use an array
 onkeydown = onkeyup = function(e){
@@ -85,8 +86,6 @@ let createpoe = function (json, css, plugins) {
     let poeblock = document.createElement("div");
     poeblock.id = "poeinst";
     document.body.appendChild(poeblock);
-
-    let customcmd = [];
 
     document.getElementById("poeinst").innerHTML = `
     <input id="entrada" type="text" autocomplete="false" />

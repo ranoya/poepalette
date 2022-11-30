@@ -6,10 +6,14 @@
   --color-hover: #000cd0;
   --input-text: #dadada;
   --scroll-track: #00078a00;
-  --color-shadow: #c1c1c144;
+  --color-shadow: #000cd044;
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: #2de6ef;
+}
+
+#outputs::-webkit-scrollbar-thumb:hover {
   background: #2de6ef;
 }
 
