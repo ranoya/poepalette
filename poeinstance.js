@@ -16,7 +16,6 @@ onkeydown = onkeyup = function(e){
     keymapping[75] = false;
     keymapping[80] = false;
     keymapping[16] = false;
-    console.log(keymapping);
       toggle("poeinst");
     }
   
