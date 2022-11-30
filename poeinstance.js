@@ -195,13 +195,10 @@ let createpoe = function (json, css, plugins) {
         // TODO
         // CALCULATOR NOT WORKING PROPERLY
         if (
-          document
-            .getElementsByTagName("input")[0]
-            .value.match(/^[0-9 \+\*\/\-\(\)\^\%\.]+[0-9\)]$/)
+          document.getElementById("entrada").value.match(/^[0-9 \+\*\/\-\(\)\^\%\.]+[0-9\)]$/)
         ) {
           try {
-            let potencia = document
-              .getElementsByTagName("input")[0]
+            let potencia = document.getElementById("entrada")
               .value.replace(/([0-9]+)(\^)([0-9]+)/gim, "Math.pow($1,$3)");
             let xpto = potencia.match(/.*/);
             code = `<div class="outputgrid">= ` + eval(xpto[0]) + `</div>`;
@@ -211,15 +208,26 @@ let createpoe = function (json, css, plugins) {
         present(code);
       } else {
         let code = "";
+        
+        if (document.getElementById("entrada")
+          .value == "/") {
+          
+          for (let i = 0; i < customcmd.length; i++) {
+
+            code += `<a href='javascript:setinput("/${customcmd[i]}")'>${customcmd[i]}</a>`;
+            
+          }
+          
+        }
+
+
         for (let i = 0; i < customcmd.length; i++) {
           if (
-            document
-              .getElementsByTagName("input")[0]
+            document.getElementById("entrada")
               .value.match("/" + customcmd[i])
           ) {
             let patt = new RegExp(customcmd[i] + "(.*)", "i");
-            let extrai = document
-              .getElementsByTagName("input")[0]
+            let extrai = document.getElementById("entrada")
               .value.match(patt);
 
             if (
