@@ -265,7 +265,7 @@ let setinput = function (n) {
 
 let addinput = function (n) {
        let z = document.getElementById("entrada").value;
-       document.getElementById("entrada").value = z + " " + n;
+       document.getElementById("entrada").value = z.trim() + " " + n + " ";
         document
           .getElementById("entrada")
           .dispatchEvent(new Event("input", { bubbles: true }));
