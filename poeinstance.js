@@ -263,6 +263,15 @@ let setinput = function (n) {
         
 };
 
+let addinput = function (n) {
+       let z = document.getElementById("entrada").value;
+       document.getElementById("entrada").value = z + " " + n;
+        document
+          .getElementById("entrada")
+          .dispatchEvent(new Event("input", { bubbles: true }));
+        document.getElementById("entrada").focus();
+}
+
 
 // Present results in Poe
 let present = function (code) {
@@ -448,6 +457,29 @@ const GoogleSheetDataCSV = function(url) {
  * Ex:
  * 
  * separate = bfilter(oldarray, "active");
+ * 
+ */
+
+bfilter = function (arr, crit) {
+  let newarr = [];
+  let c = 0;
+  for (let k = 0; k < arr.length; k++) {
+    if (arr[k][crit] != "" && arr[k][crit] != undefined) {
+      newarr[c] = {};
+      newarr[c] = arr[k];
+      c++;
+    }
+  }
+  return newarr;
+}
+
+/**
+ * Filter Condition
+ * Create a list array from an old one when their elements have a specific value match on a specific criteria(key)
+ * 
+ * Ex:
+ * 
+ * separate = cfilter(oldarray, "status", "(.*)ok");
  * 
  */
 
