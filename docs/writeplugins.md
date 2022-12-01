@@ -91,9 +91,10 @@ let MYFUCNTION = function (par) {
 
   let jsonfile = `MYJSONURL`; // Change the URL here (imperative)
 
-  let namekey = `Name`; // Change the Key for the Title of the links, if needed
-  let groupkey = `Group`; // Change the Key for the Groups of the links, if needed
-  let linkkey = `Link`; // Change the Key for the link url of the links, if needed
+  let namekey = `nome`; // Change the Key for the Title of the links, if needed
+  let groupkey = `linguagem`; // Change the Key for the Groups of the links, if needed
+  let linkkey = `link`; // Change the Key for the link url of the links, if needed
+  let typekey = `Type`; // Change the Key for the link type of the links, if needed
 
   // Don't mess with the rest, if you don't want trouble ;-)
 
@@ -103,15 +104,20 @@ let MYFUCNTION = function (par) {
       let dados = select(jsondata, multipatterncheck_exclude, par);
       let selectedarr = tags(dados, groupkey, ",");
       let code = `<div class="outputgrid">`;
-      let arr = orderby(dados, selectedarr, groupkey);
+      let arr = orderbytemplate(dados, selectedarr, groupkey, [
+        namekey,
+        groupkey,
+        linkkey,
+        typekey,
+      ]);
       if (arr.length > 10) {
         for (let c = 0; c < selectedarr.length; c++) {
           code += `<span class='categoria'><a href='javascript:addinput("${selectedarr[c]}")' class='grouplink'>${selectedarr[c]}</a></span>`;
           for (let l = 0; l < arr.length; l++) {
-            if (arr[l]["cat"] == selectedarr[c]) {
-              if (arr[l]["Type"] == "self") {
+            if (arr[l][groupkey] == selectedarr[c]) {
+              if (arr[l][typekey] == "self") {
                 code += `<a target='_self' href='javascript:be("${arr[l][linkkey]}"); toggle("poeinst");' class='linksrecursos'>${arr[l][namekey]}</a>`;
-              } else if (arr[l]["Type"] == "embed") {
+              } else if (arr[l][typekey] == "embed") {
                 code += `<a target='_self' href='javascript:embed("${arr[l][linkkey]}")' class='linksrecursos'>${arr[l][namekey]}</a>`;
               } else {
                 code += `<a target='_blank' href='javascript:be("${arr[l][linkkey]}"); toggle("poeinst");' class='linksrecursos'>${arr[l][namekey]}</a>`;
@@ -128,9 +134,9 @@ let MYFUCNTION = function (par) {
         code += `</span>`;
         for (let l = 0; l < arr.length; l++) {
           if (arr[l][linkkey] != ultimoregistro) {
-            if (arr[l]["Type"] == "self") {
+            if (arr[l][typekey] == "self") {
               code += `<a target='_self' href='javascript:be("${arr[l][linkkey]}"); toggle("poeinst");' class='linksrecursos'>${arr[l][namekey]}</a>`;
-            } else if (arr[l]["Type"] == "embed") {
+            } else if (arr[l][typekey] == "embed") {
               code += `<a target='_self' href='javascript:embed("${arr[l][linkkey]}")' class='linksrecursos'>${arr[l][namekey]}</a>`;
             } else {
               code += `<a target='_blank' href='javascript:be("${arr[l][linkkey]}"); toggle("poeinst");' class='linksrecursos'>${arr[l][namekey]}</a>`;

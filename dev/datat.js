@@ -85,6 +85,37 @@ orderby = function (arr, lista, crit) {
   return mynewarr;
 }
 
+orderbytemplate = function (arr, lista, crit, keys) {
+  let mynewarr = [];
+  let myregex = new RegExp();
+  let listacrit = 0;
+  let nomecrit = [];
+  let posicao = 0;
+
+  for (let a = 0; a < arr.length; a++) {
+    listacrit = 0;
+    nomecrit = [];
+    for (let l = 0; l < lista.length; l++) {
+      myregex = new RegExp(lista[l]);
+      if (myregex.test(arr[a][crit])) {
+        nomecrit[listacrit] = lista[l];
+        listacrit++;
+      }
+    }
+
+    for (let lc = 0; lc < listacrit; lc++) {
+      mynewarr[posicao] = {};
+      mynewarr[posicao][keys[0]] = arr[a][keys[0]];
+      mynewarr[posicao][keys[2]] = arr[a][keys[2]];
+      mynewarr[posicao][keys[3]] = arr[a][keys[3]];
+      mynewarr[posicao][keys[1]] = nomecrit[lc];
+      posicao++;
+    }
+  }
+
+  return mynewarr;
+}
+
 
 
 /**
@@ -586,8 +617,8 @@ let omnifilterfetchdata = function (arquivojson, el_id) {
 
 // Omnifilter Event Listener Function
 let startomnifilter = function (omnifdados, elemento, funcprocessa) {
-    console.log("Omnifilter: fetch finished");
-    console.table(omnifdados);
+    // console.log("Omnifilter: fetch finished");
+    // console.table(omnifdados);
 
     /**
      *  Add a Listener Funcion filtering JSON data with
@@ -599,7 +630,7 @@ let startomnifilter = function (omnifdados, elemento, funcprocessa) {
         funcprocessa(newomniarray);
     });
 
-    console.log("Omnifilter: filtering event listener started");
+    // console.log("Omnifilter: filtering event listener started");
 
     let newomniarray = select(omnifdados, multipatterncheck_exclude, "");
     funcprocessa(newomniarray);
