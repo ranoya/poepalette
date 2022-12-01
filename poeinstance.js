@@ -460,7 +460,7 @@ const GoogleSheetDataCSV = function(url) {
  * 
  */
 
-bfilter = function (arr, crit) {
+const bfilter = function (arr, crit) {
   let newarr = [];
   let c = 0;
   for (let k = 0; k < arr.length; k++) {
@@ -482,6 +482,22 @@ bfilter = function (arr, crit) {
  * separate = cfilter(oldarray, "status", "(.*)ok");
  * 
  */
+
+const cfilter = function (arr, crit, regex) {
+  let newarr = [];
+
+  let patt = new RegExp(regex, "i");
+
+  let c = 0;
+  for (let k = 0; k < arr.length; k++) {
+    if (arr[k][crit] != "" && arr[k][crit] != undefined && patt.test(arr[k][crit])) {
+      newarr[c] = {};
+      newarr[c] = arr[k];
+      c++;
+    }
+  }
+  return newarr;
+}
 
 /**
  * Unique Function

@@ -205,7 +205,7 @@ const GoogleSheetDataCSV = function(url) {
  * 
  */
 
-bfilter = function (arr, crit) {
+const bfilter = function (arr, crit) {
   let newarr = [];
   let c = 0;
   for (let k = 0; k < arr.length; k++) {
@@ -228,7 +228,7 @@ bfilter = function (arr, crit) {
  * 
  */
 
-cfilter = function (arr, crit, regex) {
+const cfilter = function (arr, crit, regex) {
   let newarr = [];
 
   let patt = new RegExp(regex, "i");
