@@ -26,16 +26,19 @@ So, let's see the _/Games_ function, that will load a differente JSON/Spreadshee
 
 ```js
 let games = function (par) {
-  fetch(
-    `https://opensheet.elk.sh/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/List`
-  )
+  let jsonfile = `https://opensheet.elk.sh/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/List`;
+
+  let namekey = `game`;
+  let linkkey = `link`;
+
+  fetch(jsonfile)
     .then((response) => response.json())
     .then((dados) => {
       let newarr = select(dados, multipatterncheck_exclude, par);
       let xpto = `<div class="outputgrid">`;
 
       for (let i = 0; i < newarr.length; i++) {
-        xpto += `<a target='_blank' href='${newarr[i][linkkey]}'>${newarr[i].game}`;
+        xpto += `<a target='_blank' href='${newarr[i][linkkey]}'>${newarr[i][namekey]}`;
       }
 
       xpto += `</div>`;
@@ -46,11 +49,15 @@ let games = function (par) {
 
 This code will first fetch the Games JSON, and, after that, use a _select_ function from the [DataT library](https://github.com/ranoya/DataT) already avaliable inside POE. The `let newarr = select(dados, multipatterncheck_exclude, par);` whill create a new array with data filtered by a String, wich is the String passed to the function after _/Games .../_ (We call it _par_, but you name yours what you prefer). After writing multiple `<a>` tags with each link, the list is passed to the _present()_ function to be shown. This kind of code is very common if you are used to fetch JSONs in javascript, and use Arrays and Objects.
 
-If you can't understand what this code does, but still want to create subsearches for your own bookmarks, just change the code with your function name, and the URL of the JSON with your links:
+If you can't understand what this code does, but still want to create subsearches for your own bookmarks, just change the code with your function name, the URL of the JSON with your links, and the columns/key names:
 
 ```js
 let MYFUNCTIONNAME = function (par) {
-  fetch(`MYSPREADSHEET-JSON-URL`)
+
+  let jsonfile = `YOUR URL`;
+
+  let namekey = `LINK NAME COLUMN NAME/KEY`;
+  let linkkey = `LINK URL COLUMN NAME/KEY`;
 
 ```
 
