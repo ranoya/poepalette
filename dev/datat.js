@@ -17,6 +17,12 @@ let addinput = function (n) {
         document.getElementById("entrada").focus();
 }
 
+// preventing errors
+
+let toggle = function (who) {
+  // do nothing
+}
+
 
 // Present results in Poe
 let present = function (code) {
