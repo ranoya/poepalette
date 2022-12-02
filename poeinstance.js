@@ -23,7 +23,7 @@ onkeydown = onkeyup = function(e){
 }
 
 
-let toggle = function (who) {
+const toggle = function (who) {
   if (document.getElementById(who).style.display == "none" || document.getElementById(who).style.display == "") {
     document.getElementById(who).style.display = "block";
     keymapping[93] = false;
@@ -42,7 +42,7 @@ let toggle = function (who) {
   }
 }
 
-let startpoe = function (json, css, plugins) {
+const startpoe = function (json, css, plugins) {
 
   let lnkcss = document.createElement("link");
     lnkcss.href = "https://poepalette.vercel.app/dev/instancestyle.css";
@@ -82,7 +82,7 @@ let startpoe = function (json, css, plugins) {
   window.onload = createpoe(json, css, plugins);
 }
 
-let createpoe = function (json, css, plugins) {
+const createpoe = function (json, css, plugins) {
 
     let poeblock = document.createElement("div");
     poeblock.id = "poeinst";
@@ -254,7 +254,7 @@ let createpoe = function (json, css, plugins) {
 
 // Change the input value
 
-let setinput = function (n) {
+const setinput = function (n) {
         document.getElementById("entrada").value = n;
         document
           .getElementById("entrada")
@@ -263,7 +263,7 @@ let setinput = function (n) {
         
 };
 
-let addinput = function (n) {
+const addinput = function (n) {
        let z = document.getElementById("entrada").value;
        document.getElementById("entrada").value = z.trim() + " " + n + " ";
         document
@@ -274,14 +274,18 @@ let addinput = function (n) {
 
 
 // Present results in Poe
-let present = function (code) {
+const present = function (code) {
 
     document.getElementById("outputs").innerHTML = code;
 
 }
 
+const be = function (url) {
+  window.location.href = url;
+}
+
 // Embed content
-let embed = function (url) {
+const embed = function (url) {
     document.getElementById("outputs").style.overflow = 'hidden';
     let code = `<iframe frameborder=0 src='${url}'></iframe>`;
     present(code);
@@ -291,7 +295,7 @@ let embed = function (url) {
 // FUNÇÃO URL GET
 // let data = $_GET['xpto']; www.site.com/?xpto=teste
 
-$_GET = [];
+let $_GET = [];
 (function(){
     corte = window.location.href.toString().indexOf('?');
     if (corte > 0) {
@@ -309,7 +313,7 @@ $_GET = [];
 
 // Order By...
 
-orderby = function (arr, lista, crit) {
+const orderby = function (arr, lista, crit) {
   let mynewarr = [];
   let myregex = new RegExp();
   let listacrit = 0;
@@ -340,7 +344,7 @@ orderby = function (arr, lista, crit) {
   return mynewarr;
 }
 
-orderbytemplate = function (arr, lista, crit, keys) {
+const orderbytemplate = function (arr, lista, crit, keys) {
   let mynewarr = [];
   let myregex = new RegExp();
   let listacrit = 0;

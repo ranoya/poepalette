@@ -19,20 +19,24 @@ let addinput = function (n) {
 
 // preventing errors
 
-let toggle = function (who) {
+const toggle = function (who) {
   // do nothing
+}
+
+const be = function (url) {
+  window.location.href = url;
 }
 
 
 // Present results in Poe
-let present = function (code) {
+const present = function (code) {
 
     document.getElementById("outputs").innerHTML = code;
 
 }
 
 // Embed content
-let embed = function (url) {
+const embed = function (url) {
     document.getElementById("outputs").style.overflow = 'hidden';
     let code = `<iframe frameborder=0 src='${url}'></iframe>`;
     present(code);
@@ -42,7 +46,7 @@ let embed = function (url) {
 // FUNÇÃO URL GET
 // let data = $_GET['xpto']; www.site.com/?xpto=teste
 
-$_GET = [];
+let $_GET = [];
 (function(){
     corte = window.location.href.toString().indexOf('?');
     if (corte > 0) {
@@ -60,7 +64,7 @@ $_GET = [];
 
 // Order By...
 
-orderby = function (arr, lista, crit) {
+const orderby = function (arr, lista, crit) {
   let mynewarr = [];
   let myregex = new RegExp();
   let listacrit = 0;
@@ -91,7 +95,7 @@ orderby = function (arr, lista, crit) {
   return mynewarr;
 }
 
-orderbytemplate = function (arr, lista, crit, keys) {
+const orderbytemplate = function (arr, lista, crit, keys) {
   let mynewarr = [];
   let myregex = new RegExp();
   let listacrit = 0;
