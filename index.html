@@ -237,7 +237,7 @@
       fetch($_GET["plugins"])
         .then((response) => response.json())
         .then((dados) => {
-          console.table(dados);
+          // console.table(dados);
 
           let customplugins = "";
           for (i = 0; i < dados.length; i++) {
@@ -256,7 +256,7 @@
       )
         .then((response) => response.json())
         .then((dados) => {
-          console.table(dados);
+          // console.table(dados);
 
           let customplugins = "";
           for (i = 0; i < dados.length; i++) {
@@ -268,6 +268,23 @@
           }
 
           document.getElementById("addons").innerHTML = customplugins;
+        });
+    }
+
+    // Fetch and load Common Cloud Files
+    // This fetches a list of files and services for @ operator
+
+    let cloudfiles = [];
+
+    if (
+      typeof $_GET["files"] != undefined &&
+      $_GET["files"] != "" &&
+      $_GET["files"] != null
+    ) {
+      fetch($_GET["files"])
+        .then((response) => response.json())
+        .then((dados) => {
+          cloudfiles = dados;
         });
     }
 
@@ -375,35 +392,96 @@
       } else {
         let code = "";
 
-        if (document.getElementsByTagName("input")[0].value == "/") {
-          code += `<div class="outputgrid">`;
+        // In case of a / command
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.toString()
+            .charAt(0) == "/"
+        ) {
+          if (document.getElementsByTagName("input")[0].value == "/") {
+            code += `<div class="outputgrid">`;
 
-          for (let i = 0; i < customcmd.length; i++) {
-            code += `<a href='javascript:setinput("/${customcmd[i]} ")'>${customcmd[i]}</a>`;
+            for (let i = 0; i < customcmd.length; i++) {
+              code += `<a href='javascript:setinput("/${customcmd[i]} ")'>${customcmd[i]}</a>`;
+            }
+
+            code += `</div>`;
+            present(code);
           }
 
-          code += `</div>`;
-          present(code);
+          for (let i = 0; i < customcmd.length; i++) {
+            if (
+              document
+                .getElementsByTagName("input")[0]
+                .value.match("/" + customcmd[i])
+            ) {
+              let patt = new RegExp(customcmd[i] + "(.*)", "i");
+              let extrai = document
+                .getElementsByTagName("input")[0]
+                .value.match(patt);
+
+              if (
+                typeof extrai[1] != "undefined" &&
+                extrai[1] != null &&
+                extrai[1] != ""
+              ) {
+                eval(customcmd[i] + "('" + extrai[1] + "')");
+              }
+            }
+          }
         }
 
-        for (let i = 0; i < customcmd.length; i++) {
-          if (
-            document
-              .getElementsByTagName("input")[0]
-              .value.match("/" + customcmd[i])
-          ) {
-            let patt = new RegExp(customcmd[i] + "(.*)", "i");
-            let extrai = document
-              .getElementsByTagName("input")[0]
-              .value.match(patt);
+        // in case of a @ common cloud files search
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.toString()
+            .charAt(0) == "@" &&
+          typeof $_GET["files"] != "undefined" &&
+          $_GET["files"] != "" &&
+          $_GET["files"] != null
+        ) {
+          //first, extract the service
+          let serv = document
+            .getElementsByTagName("input")[0]
+            .value.match(/(\@(\w*)){0,1}/i);
 
-            if (
-              typeof extrai[1] != "undefined" &&
-              extrai[1] != null &&
-              extrai[1] != ""
-            ) {
-              eval(customcmd[i] + "('" + extrai[1] + "')");
+          //look for matches in coudfiles
+          let arr = [];
+          arr = cfilter(cloudfiles, "Service", serv[2]);
+          let howmanyservices = unique(arr, "Service");
+
+          // in case of multiple services match
+          if (howmanyservices.length > 1) {
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < howmanyservices.length; i++) {
+              myhtml += `<a href='javascript:setinput("@${howmanyservices[i]} ")'>${howmanyservices[i]}</a>`;
             }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+
+          // in case of one service match
+          if (howmanyservices.length == 1) {
+            // extract parameter
+            let param = str.match(/(\@(\w*) (.*)){0,1}/i);
+
+            // buid array with matching parameter
+            // this option is to match only with the Name
+            let narr = cfilter(cloudfiles, "Name", param[3]);
+
+            // this option is to match with everything
+            // let narr = select(arr,multipatterncheck_exclude,param[3]);
+
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < narr.length; i++) {
+              myhtml += `<a target='_blank' href='${narr[i].Link}'>${narr[i].Name}</a>`;
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
           }
         }
       }

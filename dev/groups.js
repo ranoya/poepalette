@@ -6,7 +6,7 @@ groups = function (par) {
             tipos = tags(newarr, "Group", ",");
 
             for (let i = 0; i < tipos.length; i++) {
-                xpto += `<a href='javascript:setinput("${tipos[i]}")'>${tipos[i]}`; 
+                xpto += `<a href='javascript:setinput("${tipos[i]}")'>${tipos[i]}</a>`; 
             }
     
     xpto += `</div>`;
