@@ -449,6 +449,9 @@
 
           //look for matches in coudfiles
           let arr = [];
+          if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
+            serv[2] = "";
+          }
           arr = cfilter(cloudfiles, "Service", serv[2]);
           let howmanyservices = unique(arr, "Service");
 
