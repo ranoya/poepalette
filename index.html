@@ -281,13 +281,16 @@
       $_GET["files"] != "" &&
       $_GET["files"] != null
     ) {
+      console.log("no Files defined");
       if (
         typeof $_GET["json"] != "undefined" &&
         $_GET["json"] != "" &&
         $_GET["json"] != null
       ) {
+        console.log("a Json is defined");
         $_GET["files"] = $_GET["json"];
       } else {
+        console.log("no json defined");
         $_GET["files"] =
           "https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference";
       }
@@ -295,6 +298,7 @@
       fetch($_GET["files"])
         .then((response) => response.json())
         .then((dados) => {
+          console.log("Files: " + $_GET["files"] + " !!!");
           cloudfiles = dados;
         });
     }
