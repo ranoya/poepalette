@@ -1,6 +1,6 @@
 # Poe
 
-# What is POE?
+## What is POE?
 
 Everyone who uses a modern text editor for coding is familiar with a Command Palette, right? (...right???)
 
@@ -10,34 +10,35 @@ When you get used to it, you want everything to start working just like that.
 
 POE is just that for handling all your web bookmarks. I'm sure you have a long list of them, don't you?... going back to the Del.ici.ous days, I assume...
 
-## And that's not all...
+### And that's not all...
 
 POE is also extensible. You can code your own javascript functions to trigger within it, and render whatever you want within it. From the latest news available in the RSS feeds of your favorite websites, to information from other databases that you may find useful.
 
-## Don't worry
+### Don't worry
 
 Everything is free, and always will be, as long as it is not used for commercial purposes. The code is open source and available on [Github](https://www.github.com/ranoya/poepalette).
 
-# Usign POE
+## Usign POE
 
 Two ways to use POE:
 
 1. Cloning the [github repo](https://github.com/ranoya/poepalette), and implementing it where (and how) you want.
 2. Using the [POE instance in Vercel](https://poepalette.vercel.app) with your own data (nothing is collected).
 
-## Using the online instance with your data
+### Using the online instance with your data
 
-Three URL variables are received containing all the data POE will show:
+Four URL variables are received containing all the data POE will show:
 
 1. _json_ variable, with json data of all bookmarks;
-2. _plugins_ variable, with json data of all plugins you want to use;
-3. _theme_ variable, with a css URL to overhide the original POE style;
+2. _plugins_ variable (optional), with json data of all plugins you want to use (called with the _/_ operator);
+3. _theme_ variable (optional), with a css URL to overhide the original POE style;
+4. _files_ variable (optional), witha json data of working files opened in cloud services (called with the _@_ operator);
 
 Example:
 
-`https://poepalette.vercep.app/?json=https://www.mysite.com/myjsonbookmarks.json&plugins=https://www.mysite.com/myplugins.json&theme=https://www.mysite.com/mycss.css`
+`https://poepalette.vercep.app/?json=https://www.mysite.com/myjsonbookmarks.json&plugins=https://www.mysite.com/myplugins.json&theme=https://www.mysite.com/mycss.css&files=https://www.mysite.com/myactualwork.json`
 
-If you do not define those variables, POE will come with the default links, default plugins, and default style.
+If you do not define those variables, POE will come with the default links, default plugins, and default style, and no working files to quick access.
 
 Well... just see for youself: [https://poepalette.vercel.app](https://poepalette.vercel.app).
 
@@ -55,7 +56,7 @@ You can create your own plugins to extend functionalities of POE.
 
 If you want to see a nice way to use plugins, load [this version](https://poepalette.vercel.app?plugins=https://opensheet.elk.sh/1gvNjBqO-8ji2Y52MqllpLWatwXltqzCb99i-D0kgXL4/Custom) with the _/Games_ plugin, and type _/games fps_.
 
-## An easy way to fill the JSON data
+### An easy way to fill the JSON data
 
 We recomend using [opensheet.elk.sh](https://opensheet.elk.sh) to convert data stored in a Google Sheets document into JSON, on the fly. We use that in the default data for POE.
 
@@ -122,7 +123,7 @@ With this tool, you can easily change and manage all the links and plugins used 
 ]
 ```
 
-## The data structure
+### The data structure
 
 The bookmarks json uses four JSON Keys for storing each registry:
 
@@ -137,7 +138,7 @@ Any other JSON Keys and data you fill in your JSON file or Google Sheet will be 
 
 Just look into the JSON data that the link "This data (in Spreedsheet)" has and Key "Other Info 2" filled with the information "Source List". So, if you type "Source L" in POE with the default data, the "This data (in Spreedsheet)" will show up.
 
-## Plugins data structure
+### Plugins data structure
 
 The plugins json is even more simplier: just two JSON Keys.
 
@@ -167,3 +168,21 @@ Another example of plugin can be loaded with a different [plugins JSON](https://
 ![Google Sheet used to include games plugin](https://poepalette.vercel.app/docs/googlesheetgamesimg.png)
 
 And if you have basic knowledge of javascript, writing these kind of plugins is an easily job.
+
+## Working Files in Cloud Services
+
+The @ operator is a shortcut to access your working files stored online, organized by the service ou platform where it is stored.
+
+The json file uses 3 keys for each document you want to have a quick access:
+
+| Key     | Description                                        | Type of Data                                                           | Example                                                                                        |
+| ------- | -------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Name    | Name of the document                               | The name you prefer (don't have to be the same as the proper document) | My Finances                                                                                    |
+| Link    | The full URL to the document                       | An URL address                                                         | https://docs.google.com/spreadsheets/d/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/edit#gid=0 |
+| Service | A name for the service to call with the @ operator | a word                                                                 | googlesheet                                                                                    |
+
+When used, the @ operator will first search by the services registered in the json file; then, when one of the services is identified, it will look for the links associated with this service.
+
+![Google Sheet used to include all POE documentation](https://poepalette.vercel.app/docs/googlesheetcloudfiles.png)
+
+You can try the @ operator with that data in [this example](https://poepalette.vercel.app?files=https://opensheet.elk.sh/1M-je8SVNvSQcMt52bV_UJ28ISuifHlvZL11oFa5Jo1s/WorkingOn).

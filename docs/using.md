@@ -7,17 +7,18 @@ Two ways to use POE:
 
 ## Using the online instance with your data
 
-Three URL variables are received containing all the data POE will show:
+Four URL variables are received containing all the data POE will show:
 
 1. _json_ variable, with json data of all bookmarks;
-2. _plugins_ variable, with json data of all plugins you want to use;
-3. _theme_ variable, with a css URL to overhide the original POE style;
+2. _plugins_ variable (optional), with json data of all plugins you want to use (called with the _/_ operator);
+3. _theme_ variable (optional), with a css URL to overhide the original POE style;
+4. _files_ variable (optional), witha json data of working files opened in cloud services (called with the _@_ operator);
 
 Example:
 
-`https://poepalette.vercep.app/?json=https://www.mysite.com/myjsonbookmarks.json&plugins=https://www.mysite.com/myplugins.json&theme=https://www.mysite.com/mycss.css`
+`https://poepalette.vercep.app/?json=https://www.mysite.com/myjsonbookmarks.json&plugins=https://www.mysite.com/myplugins.json&theme=https://www.mysite.com/mycss.css&files=https://www.mysite.com/myactualwork.json`
 
-If you do not define those variables, POE will come with the default links, default plugins, and default style.
+If you do not define those variables, POE will come with the default links, default plugins, and default style, and no working files to quick access.
 
 Well... just see for youself: [https://poepalette.vercel.app](https://poepalette.vercel.app).
 
@@ -59,6 +60,10 @@ With this tool, you can easily change and manage all the links and plugins used 
 ## CSS customization
 
 [CSS variables](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/css.md&embed=plain)
+
+## Working files in cloud services
+
+[Working Files structure](https://www.ranoya.com/aulas/tryit/markdown2/index.html?file=https://poepalette.vercel.app/docs/files.md&embed=plain)
 
 ## Writing plugins
 
