@@ -73,7 +73,7 @@ input {
 
 #outputs iframe {
   width: 100%;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 169px);
 }
 
 .gridhead {
