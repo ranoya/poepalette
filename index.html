@@ -291,7 +291,6 @@
       $_GET["files"] != "" &&
       $_GET["files"] != null
     ) {
-      console.log("no Files defined");
       filesjson = $_GET["files"];
     }
 
@@ -450,10 +449,7 @@
           document
             .getElementsByTagName("input")[0]
             .value.toString()
-            .charAt(0) == "@" &&
-          typeof $_GET["files"] !== "undefined" &&
-          $_GET["files"] != "" &&
-          $_GET["files"] != null
+            .charAt(0) == "@"
         ) {
           //first, extract the service
           let serv = document
