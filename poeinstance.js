@@ -4,6 +4,7 @@ let matrizentradas = [""];
 let matrizi = 1;
 let matual = 1;
 let customcmd = [];
+let cloudfiles = [];
 
 var keymapping = {}; // You could also use an array
 onkeydown = onkeyup = function(e){
@@ -42,7 +43,16 @@ const toggle = function (who) {
   }
 }
 
-const startpoe = function (json, css, plugins) {
+const startpoe = function (json, css, plugins, files) {
+
+  if (typeof files != "undefined" && files != "" && files != null) {
+ 
+     fetch(files)
+        .then((response) => response.json())
+        .then((dados) => {
+          cloudfiles = dados;
+        });
+  }
 
   let lnkcss = document.createElement("link");
     lnkcss.href = "https://poepalette.vercel.app/dev/instancestyle.css";
@@ -209,40 +219,101 @@ const createpoe = function (json, css, plugins) {
         present(code);
       } else {
         let code = "";
-        
-        if (document.getElementById("entrada")
-          .value == "/") {
-          
-          code += `<div class="outputgrid">`
-          
-          for (let i = 0; i < customcmd.length; i++) {
 
-            code += `<a href='javascript:setinput("/${customcmd[i]} ")'>${customcmd[i]}</a>`;
+        // In case of a / command
+        if (
+          document.getElementById("entrada").value.toString().charAt(0) == "/"
+        ) {
+        
+          if (document.getElementById("entrada")
+            .value == "/") {
+          
+            code += `<div class="outputgrid">`
+          
+            for (let i = 0; i < customcmd.length; i++) {
+
+              code += `<a href='javascript:setinput("/${customcmd[i]} ")'>${customcmd[i]}</a>`;
             
+            }
+
+            code += `</div>`
+            present(code);
+          
           }
 
-          code += `</div>`
-          present(code);
+
+          for (let i = 0; i < customcmd.length; i++) {
+            if (
+              document.getElementById("entrada")
+                .value.match("/" + customcmd[i])
+            ) {
+              let patt = new RegExp(customcmd[i] + "(.*)", "i");
+              let extrai = document.getElementById("entrada")
+                .value.match(patt);
+
+              if (
+                typeof extrai[1] != "undefined" &&
+                extrai[1] != null &&
+                extrai[1] != ""
+              ) {
+                eval(customcmd[i] + "('" + extrai[1] + "')");
+              }
+            }
+          }
           
         }
 
+        // in case of a @ common cloud files search
+        if (
+          document.getElementById("entrada").value.toString().charAt(0) == "@" &&
+          files != "undefined" &&
+          files != "" &&
+          files != null
+        ) {
+          //first, extract the service
+          let serv = document.getElementById("entrada").value.match(/(\@(\w*)){0,1}/i);
 
-        for (let i = 0; i < customcmd.length; i++) {
-          if (
-            document.getElementById("entrada")
-              .value.match("/" + customcmd[i])
-          ) {
-            let patt = new RegExp(customcmd[i] + "(.*)", "i");
-            let extrai = document.getElementById("entrada")
-              .value.match(patt);
+          //look for matches in coudfiles
+          let arr = [];
+          if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
+            serv[2] = "";
+          }
+          arr = cfilter(cloudfiles, "Service", serv[2]);
+          let howmanyservices = unique(arr, "Service");
 
-            if (
-              typeof extrai[1] != "undefined" &&
-              extrai[1] != null &&
-              extrai[1] != ""
-            ) {
-              eval(customcmd[i] + "('" + extrai[1] + "')");
+          // in case of multiple services match
+          if (howmanyservices.length > 1) {
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < howmanyservices.length; i++) {
+              myhtml += `<a href='javascript:setinput("@${howmanyservices[i]} ")'>${howmanyservices[i]}</a>`;
             }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+
+          // in case of one service match
+          if (howmanyservices.length == 1) {
+            // extract parameter
+            let param = document.getElementById("entrada").value.match(/(\@(\w*) (.*)){0,1}/i);
+
+            if (typeof param[3] == "undefined" || param[3] == null) {
+              param[3] = "";
+            }
+            // buid array with matching parameter
+            // this option is to match only with the Name
+            //let narr = cfilter(cloudfiles, "Name", param[3]);
+
+            // this option is to match with everything
+            let narr = select(arr, multipatterncheck_exclude, param[3]);
+
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < narr.length; i++) {
+              myhtml += `<a target='_blank' href='${narr[i].Link}'>${narr[i].Name}</a>`;
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
           }
         }
       }
