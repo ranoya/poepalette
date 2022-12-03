@@ -47,12 +47,15 @@ const startpoe = function (json, css, plugins, files) {
 
   if (typeof files != "undefined" && files != "" && files != null) {
  
-     fetch(files)
+    files = json;
+     
+  }
+
+  fetch(files)
         .then((response) => response.json())
         .then((dados) => {
           cloudfiles = dados;
         });
-  }
 
   let lnkcss = document.createElement("link");
     lnkcss.href = "https://poepalette.vercel.app/dev/instancestyle.css";

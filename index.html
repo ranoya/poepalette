@@ -281,6 +281,17 @@
       $_GET["files"] != "" &&
       $_GET["files"] != null
     ) {
+      if (
+        typeof $_GET["json"] != undefined &&
+        $_GET["json"] != "" &&
+        $_GET["json"] != null
+      ) {
+        $_GET["files"] = $_GET["json"];
+      } else {
+        $_GET["files"] =
+          "https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference";
+      }
+
       fetch($_GET["files"])
         .then((response) => response.json())
         .then((dados) => {
