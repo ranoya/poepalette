@@ -115,7 +115,7 @@
     let listaentradas = function () {
       clearTimeout(capturaentrada);
       if (
-        typeof document.getElementsByTagName("input")[0] != "undefined" &&
+        typeof document.getElementsByTagName("input")[0] !== "undefined" &&
         document.getElementsByTagName("input")[0] != null
       ) {
         if (document.getElementsByTagName("input")[0].value != "") {
@@ -191,7 +191,7 @@
     // Customizing title
 
     if (
-      typeof $_GET["title"] != "undefined" &&
+      typeof $_GET["title"] !== "undefined" &&
       $_GET["title"] != "" &&
       $_GET["title"] != null
     ) {
@@ -213,7 +213,7 @@
     // Customizing looks by loading new CSS
 
     if (
-      typeof $_GET["css"] != "undefined" &&
+      typeof $_GET["css"] !== "undefined" &&
       $_GET["css"] != "" &&
       $_GET["css"] != null
     ) {
@@ -230,7 +230,7 @@
     let customcmd = [];
 
     if (
-      typeof $_GET["plugins"] != "undefined" &&
+      typeof $_GET["plugins"] !== "undefined" &&
       $_GET["plugins"] != "" &&
       $_GET["plugins"] != null
     ) {
@@ -279,15 +279,13 @@
     console.log("Files?... " + $_GET["files"]);
 
     if (
-      typeof $_GET["files"] != "undefined" &&
-      $_GET["files"] != "undefined" &&
+      typeof $_GET["files"] !== "undefined" &&
       $_GET["files"] != "" &&
       $_GET["files"] != null
     ) {
       console.log("no Files defined");
       if (
-        typeof $_GET["json"] != "undefined" &&
-        $_GET["json"] != "undefined" &&
+        typeof $_GET["json"] !== "undefined" &&
         $_GET["json"] != "" &&
         $_GET["json"] != null
       ) {
@@ -311,8 +309,7 @@
     // This fetches the data and start filtering results with omnifilter function
 
     if (
-      typeof $_GET["json"] != "undefined" &&
-      $_GET["json"] != "undefined" &&
+      typeof $_GET["json"] !== "undefined" &&
       $_GET["json"] != "" &&
       $_GET["json"] != null
     ) {
@@ -442,7 +439,7 @@
                 .value.match(patt);
 
               if (
-                typeof extrai[1] != "undefined" &&
+                typeof extrai[1] !== "undefined" &&
                 extrai[1] != null &&
                 extrai[1] != ""
               ) {
@@ -458,8 +455,7 @@
             .getElementsByTagName("input")[0]
             .value.toString()
             .charAt(0) == "@" &&
-          typeof $_GET["files"] != "undefined" &&
-          $_GET["files"] != "undefined" &&
+          typeof $_GET["files"] !== "undefined" &&
           $_GET["files"] != "" &&
           $_GET["files"] != null
         ) {
