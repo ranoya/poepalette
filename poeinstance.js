@@ -89,10 +89,10 @@ const startpoe = function (json, css, plugins, files) {
           });
       }
   
-  window.onload = createpoe(json, css, plugins);
+  window.onload = createpoe(json);
 }
 
-const createpoe = function (json, css, plugins) {
+const createpoe = function (json) {
 
     let poeblock = document.createElement("div");
     poeblock.id = "poeinst";
@@ -266,10 +266,7 @@ const createpoe = function (json, css, plugins) {
         // in case of a @ common cloud files search
         if (
           document.getElementById("entrada").value.toString().charAt(0) == "@" &&
-          files != "undefined" &&
-          files != "" &&
-          files != null
-        ) {
+          cloudfiles.length != 0) {
           //first, extract the service
           let serv = document.getElementById("entrada").value.match(/(\@(\w*)){0,1}/i);
 
