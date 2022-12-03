@@ -280,12 +280,14 @@
 
     if (
       typeof $_GET["files"] != "undefined" &&
+      $_GET["files"] != "undefined" &&
       $_GET["files"] != "" &&
       $_GET["files"] != null
     ) {
       console.log("no Files defined");
       if (
         typeof $_GET["json"] != "undefined" &&
+        $_GET["json"] != "undefined" &&
         $_GET["json"] != "" &&
         $_GET["json"] != null
       ) {
@@ -310,6 +312,7 @@
 
     if (
       typeof $_GET["json"] != "undefined" &&
+      $_GET["json"] != "undefined" &&
       $_GET["json"] != "" &&
       $_GET["json"] != null
     ) {
@@ -456,6 +459,7 @@
             .value.toString()
             .charAt(0) == "@" &&
           typeof $_GET["files"] != "undefined" &&
+          $_GET["files"] != "undefined" &&
           $_GET["files"] != "" &&
           $_GET["files"] != null
         ) {
