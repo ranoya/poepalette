@@ -473,12 +473,14 @@
               .getElementsByTagName("input")[0]
               .value.match(/(\@(\w*) (.*)){0,1}/i);
 
+            console.table(param);
+
             // buid array with matching parameter
             // this option is to match only with the Name
-            let narr = cfilter(cloudfiles, "Name", param[3]);
+            //let narr = cfilter(cloudfiles, "Name", param[3]);
 
             // this option is to match with everything
-            // let narr = select(arr,multipatterncheck_exclude,param[3]);
+            let narr = select(arr, multipatterncheck_exclude, param[3]);
 
             let myhtml = `<div class="outputgrid">`;
             for (let i = 0; i < narr.length; i++) {
