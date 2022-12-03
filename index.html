@@ -191,7 +191,7 @@
     // Customizing title
 
     if (
-      typeof $_GET["title"] != undefined &&
+      typeof $_GET["title"] != "undefined" &&
       $_GET["title"] != "" &&
       $_GET["title"] != null
     ) {
@@ -213,7 +213,7 @@
     // Customizing looks by loading new CSS
 
     if (
-      typeof $_GET["css"] != undefined &&
+      typeof $_GET["css"] != "undefined" &&
       $_GET["css"] != "" &&
       $_GET["css"] != null
     ) {
@@ -230,7 +230,7 @@
     let customcmd = [];
 
     if (
-      typeof $_GET["plugins"] != undefined &&
+      typeof $_GET["plugins"] != "undefined" &&
       $_GET["plugins"] != "" &&
       $_GET["plugins"] != null
     ) {
@@ -277,12 +277,12 @@
     let cloudfiles = [];
 
     if (
-      typeof $_GET["files"] != undefined &&
+      typeof $_GET["files"] != "undefined" &&
       $_GET["files"] != "" &&
       $_GET["files"] != null
     ) {
       if (
-        typeof $_GET["json"] != undefined &&
+        typeof $_GET["json"] != "undefined" &&
         $_GET["json"] != "" &&
         $_GET["json"] != null
       ) {
@@ -303,7 +303,7 @@
     // This fetches the data and start filtering results with omnifilter function
 
     if (
-      typeof $_GET["json"] != undefined &&
+      typeof $_GET["json"] != "undefined" &&
       $_GET["json"] != "" &&
       $_GET["json"] != null
     ) {

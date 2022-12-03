@@ -72,7 +72,7 @@ const startpoe = function (json, css, plugins, files) {
     }
   
     if (
-        typeof plugins != undefined &&
+        typeof plugins != "undefined" &&
         plugins != "" &&
         plugins != null
       ) {
@@ -569,7 +569,7 @@ const bfilter = function (arr, crit) {
   let newarr = [];
   let c = 0;
   for (let k = 0; k < arr.length; k++) {
-    if (arr[k][crit] != "" && arr[k][crit] != undefined) {
+    if (arr[k][crit] != "" && arr[k][crit] != "undefined") {
       newarr[c] = {};
       newarr[c] = arr[k];
       c++;
@@ -595,7 +595,7 @@ const cfilter = function (arr, crit, regex) {
 
   let c = 0;
   for (let k = 0; k < arr.length; k++) {
-    if (arr[k][crit] != "" && arr[k][crit] != undefined && patt.test(arr[k][crit])) {
+    if (arr[k][crit] != "" && arr[k][crit] != "undefined" && patt.test(arr[k][crit])) {
       newarr[c] = {};
       newarr[c] = arr[k];
       c++;
