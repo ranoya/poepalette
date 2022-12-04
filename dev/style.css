@@ -93,6 +93,13 @@ input {
   padding-bottom: 20px;
 }
 
+.simplediv {
+  width: calc(100vw - 50px);
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+}
+
 .categoria {
   grid-column: 1 / Span 4;
   margin-top: 16px;
