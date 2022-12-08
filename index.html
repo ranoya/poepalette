@@ -526,14 +526,11 @@
           let howmanygroups = [];
 
           for (let k = 0; k < howmanygroupsdivide.length; k++) {
-            if (howmanygroupsdivide[k].match(serv[2])) {
+            let patt = new RegExp(serv[2], "i");
+            if (howmanygroupsdivide[k].match(patt)) {
               howmanygroups.push(howmanygroupsdivide[k]);
             }
           }
-
-          console.log("termo: " + serv[2]);
-          console.table(howmanygroups);
-          console.table(arr);
 
           // in case of multiple groups match
           if (howmanygroups.length > 1) {
