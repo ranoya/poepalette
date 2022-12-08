@@ -519,12 +519,8 @@
           if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
             serv[2] = "";
           }
-          arr = cfilter(alldata, "Group", serv[2]);
+          arr = tags(alldata, "Group", ",");
           let howmanygroups = unique(arr, "Group");
-
-          console.log("termo: " + serv[2]);
-          console.table(howmanygroups);
-          console.table(arr);
 
           // in case of multiple groups match
           if (howmanygroups.length > 1) {
