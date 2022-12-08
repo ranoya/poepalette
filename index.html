@@ -519,7 +519,7 @@
           if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
             serv[2] = "";
           }
-          arr = cfilter(cloudfiles, "Group", serv[2]);
+          arr = cfilter(oarr, "Group", serv[2]);
           let howmanygroups = unique(arr, "Groups");
 
           // in case of multiple groups match
