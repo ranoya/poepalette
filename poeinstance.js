@@ -161,7 +161,7 @@ const createpoe = function (json) {
 
         if (arr.length > 10) {
           for (let c = 0; c < colecao.length; c++) {
-            code += `<span class='categoria'><a href='javascript:setinput("${colecao[c]}")' class='grouplink'>${colecao[c]}</a></span>`;
+            code += `<span class='categoria'><a href='javascript:setinput("&gt;${colecao[c]} ")' class='grouplink'>${colecao[c]}</a></span>`;
 
             for (let l = 0; l < arr.length; l++) {
               if (arr[l]["cat"] == colecao[c]) {
@@ -180,7 +180,7 @@ const createpoe = function (json) {
           code += `<span class='categoria'>`;
 
           for (let c = 0; c < colecao.length; c++) {
-            code += `<a href='javascript:setinput("${colecao[c]}")' class='grouplink'>${colecao[c]}</a> • `;
+            code += `<a href='javascript:setinput("&gt;${colecao[c]} ")' class='grouplink'>${colecao[c]}</a> • `;
           }
 
           code += `</span>`;
@@ -303,6 +303,67 @@ const createpoe = function (json) {
             // buid array with matching parameter
             // this option is to match only with the Name
             //let narr = cfilter(cloudfiles, "Name", param[3]);
+
+            // this option is to match with everything
+            let narr = select(arr, multipatterncheck_exclude, param[3]);
+
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < narr.length; i++) {
+              myhtml += `<a target='_blank' href='${narr[i].Link}'>${narr[i].Name}</a>`;
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+        }
+
+        // in case of a > show only one group
+        if (
+          document.getElementById("entrada").value.toString()
+            .charAt(0) == ">"
+        ) {
+          //first, extract group
+          let serv = document.getElementById("entrada").value.match(/(\>(\w*)){0,1}/i);
+
+          //look for matches in bookmarks
+          let arr = [];
+          if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
+            serv[2] = "";
+          }
+
+          arr = cfilter(alldata, "Group", serv[2]);
+          let howmanygroupsdivide = tags(arr, "Group", ",");
+
+          let howmanygroups = [];
+
+          for (let k = 0; k < howmanygroupsdivide.length; k++) {
+            let patt = new RegExp(serv[2], "i");
+            if (howmanygroupsdivide[k].match(patt)) {
+              howmanygroups.push(howmanygroupsdivide[k]);
+            }
+          }
+
+          // in case of multiple groups match
+          if (howmanygroups.length > 1) {
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < howmanygroups.length; i++) {
+              myhtml += `<a href='javascript:setinput("&gt;${howmanygroups[i]} ")'>${howmanygroups[i]}</a>`;
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+
+          // in case of one group match
+          if (howmanygroups.length == 1) {
+            // extract parameter
+            let param = document.getElementById("entrada").value.match(/(\>(\w*) (.*)){0,1}/i);
+
+            if (typeof param[3] == "undefined" || param[3] == null) {
+              param[3] = "";
+            }
+            // buid array with matching parameter
+            // this option is to match only with the Name
 
             // this option is to match with everything
             let narr = select(arr, multipatterncheck_exclude, param[3]);
