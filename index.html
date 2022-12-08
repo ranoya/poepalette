@@ -521,8 +521,15 @@
           }
 
           arr = cfilter(alldata, "Group", serv[2]);
-          // let howmanygroups = unique(arr, "Group");
-          let howmanygroups = tags(arr, "Group", ",");
+          let howmanygroupsdivide = tags(arr, "Group", ",");
+
+          let howmanygroups = [];
+
+          for (let k = 0; k < howmanygroupsdivide.length; k++) {
+            if (howmanygroupsdivide[k].match(serv[2])) {
+              howmanygroups.push(howmanygroupsdivide[k]);
+            }
+          }
 
           console.log("termo: " + serv[2]);
           console.table(howmanygroups);
