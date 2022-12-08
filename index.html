@@ -522,6 +522,10 @@
           arr = cfilter(oarr, "Group", serv[2]);
           let howmanygroups = unique(arr, "Group");
 
+          console.log("termo: " + serv[2]);
+          console.table(howmanygroups);
+          console.table(arr);
+
           // in case of multiple groups match
           if (howmanygroups.length > 1) {
             let myhtml = `<div class="outputgrid">`;
