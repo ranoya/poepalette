@@ -1,12 +1,12 @@
 :root {
-  --bg-color: #888888;
+  --bg-color: #444444;
   --line-separator: #555555;
   --text-color: #fbfbfb;
   --color-link: #cae0e2;
   --color-hover: #888888;
   --input-text: #fbfbfb;
   --scroll-track: #00078a00;
-  --color-shadow: #acabab;
+  --color-shadow: #686868;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -32,7 +32,4 @@ a:hover {
 
 #outputs {
   min-height: 170px;
-}
-
-.forget {
 }
