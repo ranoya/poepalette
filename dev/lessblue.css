@@ -1,0 +1,24 @@
+:root {
+  --bg-color: #343fec;
+  --line-separator: #010771;
+  --text-color: #2de6ef;
+  --color-link: #c1c1c1;
+  --color-hover: #000cd0;
+  --input-text: #dadada;
+  --scroll-track: #00078a00;
+  --color-shadow: #1d1d2d1c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2de6ef;
+}
+
+#outputs::-webkit-scrollbar-thumb:hover {
+  background: #2de6ef;
+}
+
+a:hover {
+  color: var(--color-hover, #e6be10);
+  background-color: white;
+  cursor: pointer;
+}
