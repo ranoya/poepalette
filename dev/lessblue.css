@@ -22,3 +22,14 @@ a:hover {
   background-color: white;
   cursor: pointer;
 }
+
+#poeinst {
+  min-width: 200px;
+  left: min(calc(35vw - 20px), calc(50vw - 100px));
+  border-radius: 3px;
+  min-height: 260px;
+}
+
+#outputs {
+  min-height: 170px;
+}
