@@ -7,6 +7,7 @@
   --input-text: #dadada;
   --scroll-track: #00078a00;
   --color-shadow: #1d1d2d1c;
+  --color-info: #2de6ef;
 }
 
 ::-webkit-scrollbar-thumb:hover {
