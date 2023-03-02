@@ -309,7 +309,13 @@ const createpoe = function (json) {
 
             let myhtml = `<div class="outputgrid">`;
             for (let i = 0; i < narr.length; i++) {
-              myhtml += `<a target='_blank' href='${narr[i].Link}'>${narr[i].Name}</a>`;
+              if (narr[i]["Type"] == "self") {
+                myhtml += `<a target='_self' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else if (narr[i]["Type"] == "embed") {
+                myhtml += `<a target='_self' href='javascript:embed("${narr[i].Link}")' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else {
+                myhtml += `<a target='_blank' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              }
             }
 
             myhtml += `</div>`;
@@ -370,7 +376,13 @@ const createpoe = function (json) {
 
             let myhtml = `<div class="outputgrid">`;
             for (let i = 0; i < narr.length; i++) {
-              myhtml += `<a target='_blank' href='${narr[i].Link}'>${narr[i].Name}</a>`;
+              if (narr[i]["Type"] == "self") {
+                myhtml += `<a target='_self' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else if (narr[i]["Type"] == "embed") {
+                myhtml += `<a target='_self' href='javascript:embed("${narr[i].Link}")' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else {
+                myhtml += `<a target='_blank' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              }
             }
 
             myhtml += `</div>`;
