@@ -12,12 +12,14 @@ onkeydown = onkeyup = function(e){
     keymapping[e.keyCode] = e.type == 'keydown';
 
     // ctrl+shift+p
-  if ((keymapping[93] || keymapping[91]) && keymapping[80] && keymapping[16] || (keymapping[93] || keymapping[91]) && keymapping[75]) {
+    if ((keymapping[93] || keymapping[91] || keymapping[92] || keymapping[17]) && keymapping[80] && keymapping[16] || (keymapping[93] || keymapping[91] || keymapping[92] || keymapping[17]) && keymapping[75]) {
     keymapping[93] = false;
+    keymapping[92] = false;
     keymapping[91] = false;
     keymapping[75] = false;
     keymapping[80] = false;
     keymapping[16] = false;
+    keymapping[17] = false;
       toggle("poeinst");
     }
   
@@ -28,18 +30,22 @@ const toggle = function (who) {
   if (document.getElementById(who).style.display == "none" || document.getElementById(who).style.display == "") {
     document.getElementById(who).style.display = "block";
     keymapping[93] = false;
+    keymapping[92] = false;
     keymapping[91] = false;
     keymapping[75] = false;
     keymapping[80] = false;
     keymapping[16] = false;
+    keymapping[17] = false;
     document.getElementById("entrada").focus();
   } else {
     document.getElementById(who).style.display = "none";
     keymapping[93] = false;
+    keymapping[92] = false;
     keymapping[91] = false;
     keymapping[75] = false;
     keymapping[80] = false;
     keymapping[16] = false;
+    keymapping[17] = false;
   }
 }
 
