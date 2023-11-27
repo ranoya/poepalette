@@ -581,6 +581,41 @@
           }
         }
       }
+
+      pendencias();
     };
+
+    const pendencias = function () {
+      if (!rodou) {
+        if (
+          typeof $_GET["startcommand"] != "undefined" &&
+          $_GET["startcommand"] != null &&
+          $_GET["startcommand"] != ""
+        ) {
+          setinput(decodeURI($_GET["startcommand"] + " "));
+        }
+
+        if (
+          typeof $_GET["run"] != "undefined" &&
+          $_GET["run"] != null &&
+          $_GET["run"] != ""
+        ) {
+          clearInterval(voltaaoinput);
+          setTimeout(function () {
+            embed(selectdados[0].Link);
+          }, 600);
+        }
+
+        rodou = true;
+      }
+    };
+
+    if (
+      typeof $_GET["run"] == "undefined" ||
+      $_GET["run"] == null ||
+      $_GET["run"] == ""
+    ) {
+      document.getElementById("entrada").focus();
+    }
   </script>
 </html>
