@@ -632,9 +632,12 @@
     };
 
     if (
-      typeof $_GET["run"] == "undefined" ||
-      $_GET["run"] == null ||
-      $_GET["run"] == ""
+      (typeof $_GET["nofocus"] == "undefined" ||
+        $_GET["nofocus"] == null ||
+        $_GET["nofocus"] == "") &&
+      (typeof $_GET["run"] == "undefined" ||
+        $_GET["run"] == null ||
+        $_GET["run"] == "")
     ) {
       document.getElementById("entrada").focus();
     }
