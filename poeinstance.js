@@ -175,6 +175,8 @@ const createpoe = function (json) {
                   code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
                 } else if (arr[l]["Type"] == "embed") {
                   code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
+                } else if (arr[l]["Type"] == "run") {
+                  code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
                 } else {
                   code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
                 }
@@ -197,6 +199,8 @@ const createpoe = function (json) {
                 code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
               } else if (arr[l]["Type"] == "embed") {
                 code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
+              } else if (arr[l]["Type"] == "run") {
+                code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
               } else {
                 code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
               }
