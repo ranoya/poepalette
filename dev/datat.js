@@ -1,20 +1,26 @@
 // Change the input value
 
-let setinput = function (n) {
+let setinput = function (n,nf) {
         document.getElementsByTagName("input")[0].value = n;
         document
           .getElementsByTagName("input")[0]
             .dispatchEvent(new Event("input", { bubbles: true }));
-        document.getElementsByTagName("input")[0].focus();
+
+        if (typeof nf == 'undefined' ||  nf == null || nf == '') {
+           document.getElementsByTagName("input")[0].focus();
+        }
+      
 };
 
-let addinput = function (n) {
+let addinput = function (n,nf) {
        let z = document.getElementById("entrada").value;
        document.getElementById("entrada").value = z.trim() + " " + n + " ";
         document
           .getElementById("entrada")
           .dispatchEvent(new Event("input", { bubbles: true }));
-        document.getElementById("entrada").focus();
+        if (typeof nf == 'undefined' || nf == null || nf == '') {
+          document.getElementById("entrada").focus();
+        }
 }
 
 // preventing errors
