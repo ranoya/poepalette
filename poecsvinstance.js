@@ -563,6 +563,21 @@ const getcsvdata = function (csvurl, callback) {
 
   fetch(csvurl).then(response => response.text()).then((dados) => {
 
+        let total = omnifdados.length;
+        let changecsv = "";
+        let quantquotes = 0;
+        for (let r = 0; r < total; r++) {
+          if (omnifdados.substring(r, r+1) == '"') {
+            quantquotes++;
+          }
+
+          if (omnifdados.substring(r, r+1) == '\n' && quantquotes % 2 != 0) {
+            changecsv = omnifdados.substring(0, r) + ' ' + omnifdados.substring(r + 1);
+            omnifdados = changecsv;
+          }
+
+        }
+
         let linhas = dados.split(/\r?\n|\r|\n/g);
         let linhadados = "";
         let valorfinal = "";
@@ -1094,6 +1109,21 @@ let omnifilterfetchcsvdata = function (csvurl, el_id) {
     
     // Fetch CSV file
   fetch(csvurl).then(response => response.text()).then((omnifdados) => {
+
+        let total = omnifdados.length;
+        let changecsv = "";
+        let quantquotes = 0;
+        for (let r = 0; r < total; r++) {
+          if (omnifdados.substring(r, r+1) == '"') {
+            quantquotes++;
+          }
+
+          if (omnifdados.substring(r, r+1) == '\n' && quantquotes % 2 != 0) {
+            changecsv = omnifdados.substring(0, r) + ' ' + omnifdados.substring(r + 1);
+            omnifdados = changecsv;
+          }
+
+        }
 
         let linhas = omnifdados.split(/\r?\n|\r|\n/g);
         let linhadados = "";
