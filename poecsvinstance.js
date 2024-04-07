@@ -57,7 +57,7 @@ const startpoe = function (json, css, plugins, files) {
      
   }
 
-  getcsvdata(files, function(dados) {
+  getcsvdata(GoogleSheetCsvURL(files), function(dados) {
           cloudfiles = dados;
         });
 
@@ -80,7 +80,7 @@ const startpoe = function (json, css, plugins, files) {
         plugins != "" &&
         plugins != null
       ) {
-        getcsvdata(plugins, function(dados) {
+        getcsvdata(GoogleSheetCsvURL(plugins), function(dados) {
 
             for (i = 0; i < dados.length; i++) {
               customcmd[i] = dados[i].instruction;
@@ -109,7 +109,7 @@ const createpoe = function (json) {
 
     
 
-    omnifilterfetchcsvdata(json, "entrada");
+    omnifilterfetchcsvdata(GoogleSheetCsvURL(json), "entrada");
 }
 
 /*
