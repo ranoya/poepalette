@@ -51,7 +51,7 @@ const toggle = function (who) {
 
 const startpoe = function (json, css, plugins, files) {
 
-  if (typeof files != "undefined" && files != "" && files != null) {
+  if (typeof files == "undefined" || files == "" || files != null) {
  
     files = json;
      
