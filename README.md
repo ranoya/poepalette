@@ -1,5 +1,13 @@
 # Poe
 
+## IMPORTANT UPDATE
+
+POE largely uses Ben Borges' opensheet.slk.sh solution for loading data through spreadsheets. We recently discovered that many internet providers block this address, and we are migrating data loading from spreadsheets to an internal solution that uses CSV instead of JSON.
+
+A new version will be added, without the original JSON version being modified. But it may be recommended that the new version be used so that users are not eventually harmed.
+
+The new version uses the address [https://poepalette.vercel.app/csv.html](https://poepalette.vercel.app/csv.html)?[config]
+
 ## What is POE?
 
 Everyone who uses a modern text editor for coding is familiar with a Command Palette, right? (...right???)

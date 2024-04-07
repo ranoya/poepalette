@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" type="image/ico" href="./favicon.ico" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="http://poepalette.vercel.app/assets/Poe57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="http://poepalette.vercel.app/assets/Poe60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="http://poepalette.vercel.app/assets/Poe72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="http://poepalette.vercel.app/assets/Poe76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="http://poepalette.vercel.app/assets/Poe114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="http://poepalette.vercel.app/assets/Poe120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="128x128"
+      href="http://poepalette.vercel.app/assets/Poe128.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="http://poepalette.vercel.app/assets/Poe144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="http://poepalette.vercel.app/assets/Poe152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="http://poepalette.vercel.app/assets/Poe180.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="http://poepalette.vercel.app/assets/Poe192.png"
+    />
+
+    <link rel="stylesheet" type="text/css" href="./dev/style.css" />
+
+    <script src="./dev/datat.js"></script>
+  </head>
+
+  <body>
+    <div class="gridhead">
+      <span class="categoria" style="margin-top: -10px"
+        ><svg
+          height="9"
+          style="vertical-align: baseline"
+          viewBox="0 0 396 292"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M396 169.434L175.83 46.5723L32.1741 116.876L396 169.434Z"
+            fill="var(--text-color, red)"
+          />
+          <path
+            d="M165.56 292L31.4712 196.872L32.3046 115.75L165.56 292Z"
+            fill="var(--text-color, red)"
+          />
+          <path
+            d="M0 77.5271L2.22508 0L74.8348 40.5185L0 77.5271Z"
+            fill="var(--text-color, red)"
+          />
+        </svg>
+        <span id="maintitle">POE</span><span id="relogio"></span
+      ></span>
+    </div>
+
+    <input id="entrada" type="text" autocomplete="false" />
+
+    <div id="addons"></div>
+    <div class="gridhead"><span class="separaline"></span></div>
+    <div id="outputs"><span class="loader"></span></div>
+  </body>
+
+  <script>
+    // Input History
+    let capturaentrada = "";
+    let matrizentradas = [""];
+    let matrizi = 1;
+    let matual = 1;
+
+    let listaentradas = function () {
+      clearTimeout(capturaentrada);
+      if (
+        typeof document.getElementsByTagName("input")[0] !== "undefined" &&
+        document.getElementsByTagName("input")[0] != null
+      ) {
+        if (document.getElementsByTagName("input")[0].value != "") {
+          document
+            .getElementsByTagName("input")[0]
+            .setAttribute("autocomplete", "off");
+          matrizentradas[matrizi] =
+            document.getElementsByTagName("input")[0].value;
+          matual = matrizi;
+          matrizi++;
+          // console.table(matrizentradas);
+        }
+      }
+    };
+
+    document.body.addEventListener("keyup", function (e) {
+      clearTimeout(capturaentrada);
+      // console.log(e.keyCode + " " + e.key);
+      if (e.keyCode == 38) {
+        if (matual > 0) {
+          matual--;
+        }
+        setinput(matrizentradas[matual]);
+        // console.log("matual: " + matual);
+      } else if (e.keyCode == 40) {
+        if (matual <= matrizentradas.length - 1) {
+          matual++;
+          setinput(matrizentradas[matual]);
+          // console.log("matual: " + matual);
+        }
+
+        if (matual == matrizentradas.length) {
+          setinput("");
+        }
+      } else {
+        capturaentrada = setTimeout(listaentradas, 1000);
+      }
+    });
+
+    // Set focus to the input
+    let voltaaoinput = "";
+
+    if (
+      (typeof $_GET["run"] == "undefined" ||
+        $_GET["run"] == null ||
+        $_GET["run"] == "") &&
+      (typeof $_GET["nofocus"] == "undefined" ||
+        $_GET["nofocus"] == null ||
+        $_GET["nofocus"] == "")
+    ) {
+      // Set focus to the input
+      voltaaoinput = setInterval(function () {
+        document.getElementsByTagName("input")[0].focus();
+      }, 10000);
+
+      document.getElementsByTagName("input")[0].onfocus = function () {
+        clearInterval(voltaaoinput);
+        voltaaoinput = setInterval(function () {
+          document.getElementsByTagName("input")[0].focus();
+        }, 10000);
+      };
+    }
+
+    if (
+      typeof $_GET["run"] != "undefined" &&
+      $_GET["run"] != null &&
+      $_GET["run"] != ""
+    ) {
+      clearInterval(voltaaoinput);
+    }
+
+    // Clock
+    let addzero = function (str) {
+      nstr = str.toString();
+
+      if (str.length <= 1) {
+        nstr = "0" + str;
+      }
+
+      return nstr;
+    };
+
+    let hora = new Date().getHours();
+    let minuto = new Date().getMinutes();
+
+    document.getElementById("relogio").innerHTML =
+      addzero(hora.toString()) +
+      "<span class='tick'>:</span>" +
+      addzero(minuto.toString());
+
+    setInterval(function () {
+      hora = new Date().getHours();
+      minuto = new Date().getMinutes();
+      document.getElementById("relogio").innerHTML =
+        addzero(hora.toString()) +
+        "<span class='tick'>:</span>" +
+        addzero(minuto.toString());
+    }, 60000);
+
+    // Customizing title
+
+    if (
+      typeof $_GET["title"] !== "undefined" &&
+      $_GET["title"] != "" &&
+      $_GET["title"] != null
+    ) {
+      let titltag = document.createElement("title");
+      let titcontent = document.createTextNode(decodeURI($_GET["title"]));
+      titltag.appendChild(titcontent);
+      document.head.appendChild(titltag);
+      document.getElementById("maintitle").innerHTML = decodeURI(
+        $_GET["title"]
+      );
+    } else {
+      let titltag = document.createElement("title");
+      let titcontent = document.createTextNode("POE");
+      titltag.appendChild(titcontent);
+      document.head.appendChild(titltag);
+      document.getElementById("maintitle").innerHTML = "POE";
+    }
+
+    // Customizing looks by loading new CSS
+
+    if (
+      typeof $_GET["css"] !== "undefined" &&
+      $_GET["css"] != "" &&
+      $_GET["css"] != null
+    ) {
+      let lnkcss = document.createElement("link");
+      lnkcss.href = $_GET["css"];
+      lnkcss.type = "text/css";
+      lnkcss.rel = "stylesheet";
+      document.head.appendChild(lnkcss);
+    }
+
+    // Fetch and load Plugins
+    // This fetches all custom plugins
+
+    let customcmd = [];
+
+    if (
+      typeof $_GET["plugins"] !== "undefined" &&
+      $_GET["plugins"] != "" &&
+      $_GET["plugins"] != null
+    ) {
+      fetch($_GET["plugins"])
+        .then((response) => response.json())
+        .then((dados) => {
+          // console.table(dados);
+
+          let customplugins = "";
+          for (i = 0; i < dados.length; i++) {
+            customcmd[i] = dados[i].instruction;
+
+            let scrjs = document.createElement("script");
+            scrjs.src = dados[i].js;
+            document.head.appendChild(scrjs);
+          }
+
+          document.getElementById("addons").innerHTML = customplugins;
+        });
+    } else {
+      fetch(
+        "https://opensheet.elk.sh/1u0gd9ciVrm240UPPR8O6nC_4FxJmSr6plXEodh8ar5o/Custom"
+      )
+        .then((response) => response.json())
+        .then((dados) => {
+          // console.table(dados);
+
+          let customplugins = "";
+          for (i = 0; i < dados.length; i++) {
+            customcmd[i] = dados[i].instruction;
+
+            let scrjs = document.createElement("script");
+            scrjs.src = dados[i].js;
+            document.head.appendChild(scrjs);
+          }
+
+          document.getElementById("addons").innerHTML = customplugins;
+        });
+    }
+
+    // Fetch and load Common Cloud Files
+    // This fetches a list of files and services for @ operator
+
+    let cloudfiles = [];
+    let filesjson =
+      "https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference";
+
+    if (
+      typeof $_GET["json"] !== "undefined" &&
+      $_GET["json"] != "" &&
+      $_GET["json"] != null
+    ) {
+      filesjson = $_GET["json"];
+    }
+
+    if (
+      typeof $_GET["files"] !== "undefined" &&
+      $_GET["files"] != "" &&
+      $_GET["files"] != null
+    ) {
+      filesjson = $_GET["files"];
+    }
+
+    fetch(filesjson)
+      .then((response) => response.json())
+      .then((dados) => {
+        cloudfiles = dados;
+      });
+
+    // Fetch JSON
+    // This fetches the data and start filtering results with omnifilter function
+
+    if (
+      typeof $_GET["json"] !== "undefined" &&
+      $_GET["json"] != "" &&
+      $_GET["json"] != null
+    ) {
+      omnifilterfetchdata($_GET["json"], "entrada");
+    } else {
+      omnifilterfetchdata(
+        "https://opensheet.elk.sh/1Jim3mrmeO4Q1v84iX-S7TgjM28bnyGLRqnc1CXJWd8g/Reference",
+        "entrada"
+      );
+    }
+
+    // Processing data filters (this is the real deal!)
+
+    let colecao = [];
+    let categorias = [];
+
+    let rodou = false;
+
+    omnifilter = function (oarr) {
+      document.getElementById("outputs").style.overflow = "auto";
+      colecao = tags(oarr, "Group", ",");
+      categorias = tags(oarr, "Group", ",");
+
+      if (
+        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+          ">" &&
+        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+          "@" &&
+        document.getElementsByTagName("input")[0].value.toString().charAt(0) !=
+          "/"
+      ) {
+        let code = `<div class="outputgrid">`;
+        let arr = orderby(oarr, categorias, "Group");
+
+        if (arr.length > 10) {
+          for (let c = 0; c < colecao.length; c++) {
+            code += `<span class='categoria'><a href='javascript:setinput("&gt;${colecao[c]} ")' class='grouplink'>${colecao[c]}</a></span>`;
+
+            for (let l = 0; l < arr.length; l++) {
+              if (arr[l]["cat"] == colecao[c]) {
+                if (arr[l]["Type"] == "self") {
+                  code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+                } else if (arr[l]["Type"] == "embed") {
+                  code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
+                } else if (arr[l]["Type"] == "run") {
+                  code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+                } else {
+                  code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+                }
+              }
+            }
+          }
+        } else {
+          let ultimoregistro = "";
+          code += `<span class='categoria'>`;
+
+          for (let c = 0; c < colecao.length; c++) {
+            code += `<a href='javascript:setinput("&gt;${colecao[c]} ")' class='grouplink'>${colecao[c]}</a> • `;
+          }
+
+          code += `</span>`;
+
+          for (let l = 0; l < arr.length; l++) {
+            if (arr[l].Link != ultimoregistro) {
+              if (arr[l]["Type"] == "self") {
+                code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+              } else if (arr[l]["Type"] == "embed") {
+                code += `<a target='_self' href='javascript:embed("${arr[l].Link}")' class='linksrecursos'>${arr[l].Name}</a>`;
+              } else if (arr[l]["Type"] == "run") {
+                code += `<a target='_self' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+              } else {
+                code += `<a target='_blank' href='${arr[l].Link}' class='linksrecursos'>${arr[l].Name}</a>`;
+              }
+
+              ultimoregistro = arr[l].Link;
+            }
+          }
+        }
+
+        code += `<div>`;
+
+        if (arr.length == 0) {
+          code = "";
+        }
+
+        // TODO
+        // CALCULATOR NOT WORKING PROPERLY
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.match(/^[0-9 \+\*\/\-\(\)\^\%\.]+[0-9\)]$/)
+        ) {
+          try {
+            let potencia = document
+              .getElementsByTagName("input")[0]
+              .value.replace(/([0-9]+)(\^)([0-9]+)/gim, "Math.pow($1,$3)");
+            let xpto = potencia.match(/.*/);
+            code = `<div class="outputgrid">= ` + eval(xpto[0]) + `</div>`;
+          } catch (error) {}
+        }
+
+        present(code);
+      } else {
+        let code = "";
+
+        // In case of a / command
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.toString()
+            .charAt(0) == "/"
+        ) {
+          if (document.getElementsByTagName("input")[0].value == "/") {
+            code += `<div class="outputgrid">`;
+
+            for (let i = 0; i < customcmd.length; i++) {
+              code += `<a href='javascript:setinput("/${customcmd[i]} ")'>${customcmd[i]}</a>`;
+            }
+
+            code += `</div>`;
+            present(code);
+          }
+
+          for (let i = 0; i < customcmd.length; i++) {
+            if (
+              document
+                .getElementsByTagName("input")[0]
+                .value.match("/" + customcmd[i])
+            ) {
+              let patt = new RegExp(customcmd[i] + "(.*)", "i");
+              let extrai = document
+                .getElementsByTagName("input")[0]
+                .value.match(patt);
+
+              if (
+                typeof extrai[1] !== "undefined" &&
+                extrai[1] != null &&
+                extrai[1] != ""
+              ) {
+                eval(customcmd[i] + "('" + extrai[1] + "')");
+              }
+            }
+          }
+        }
+
+        // in case of a @ common cloud files search
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.toString()
+            .charAt(0) == "@"
+        ) {
+          //first, extract the service
+          let serv = document
+            .getElementsByTagName("input")[0]
+            .value.match(/(\@(\w*)){0,1}/i);
+
+          //look for matches in coudfiles
+          let arr = [];
+          if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
+            serv[2] = "";
+          }
+          arr = cfilter(cloudfiles, "Service", serv[2]);
+          let howmanyservices = unique(arr, "Service");
+
+          // in case of multiple services match
+          if (howmanyservices.length > 1) {
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < howmanyservices.length; i++) {
+              myhtml += `<a href='javascript:setinput("@${howmanyservices[i]} ")'>${howmanyservices[i]}</a>`;
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+
+          // in case of one service match
+          if (howmanyservices.length == 1) {
+            // extract parameter
+            let param = document
+              .getElementsByTagName("input")[0]
+              .value.match(/(\@(\w*) (.*)){0,1}/i);
+
+            if (typeof param[3] == "undefined" || param[3] == null) {
+              param[3] = "";
+            }
+            // buid array with matching parameter
+            // this option is to match only with the Name
+            //let narr = cfilter(cloudfiles, "Name", param[3]);
+
+            // this option is to match with everything
+            let narr = select(arr, multipatterncheck_exclude, param[3]);
+
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < narr.length; i++) {
+              if (narr[i]["Type"] == "self") {
+                myhtml += `<a target='_self' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else if (narr[i]["Type"] == "embed") {
+                myhtml += `<a target='_self' href='javascript:embed("${narr[i].Link}")' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else {
+                myhtml += `<a target='_blank' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              }
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+        }
+
+        // in case of a > show only one group
+        if (
+          document
+            .getElementsByTagName("input")[0]
+            .value.toString()
+            .charAt(0) == ">"
+        ) {
+          //first, extract group
+          let serv = document
+            .getElementsByTagName("input")[0]
+            .value.match(/(\>(\w*)){0,1}/i);
+
+          //look for matches in bookmarks
+          let arr = [];
+          if (typeof serv[2] == "undefined" || typeof serv[2] == null) {
+            serv[2] = "";
+          }
+
+          arr = cfilter(alldata, "Group", serv[2]);
+          let howmanygroupsdivide = tags(arr, "Group", ",");
+
+          let howmanygroups = [];
+
+          for (let k = 0; k < howmanygroupsdivide.length; k++) {
+            let patt = new RegExp(serv[2], "i");
+            if (howmanygroupsdivide[k].match(patt)) {
+              howmanygroups.push(howmanygroupsdivide[k]);
+            }
+          }
+
+          // in case of multiple groups match
+          if (howmanygroups.length > 1) {
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < howmanygroups.length; i++) {
+              myhtml += `<a href='javascript:setinput("&gt;${howmanygroups[i]} ")'>${howmanygroups[i]}</a>`;
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+
+          // in case of one group match
+          if (howmanygroups.length == 1) {
+            // extract parameter
+            let param = document
+              .getElementsByTagName("input")[0]
+              .value.match(/(\>(\w*) (.*)){0,1}/i);
+
+            if (typeof param[3] == "undefined" || param[3] == null) {
+              param[3] = "";
+            }
+            // buid array with matching parameter
+            // this option is to match only with the Name
+
+            // this option is to match with everything
+            let narr = select(arr, multipatterncheck_exclude, param[3]);
+
+            let myhtml = `<div class="outputgrid">`;
+            for (let i = 0; i < narr.length; i++) {
+              if (narr[i]["Type"] == "self") {
+                myhtml += `<a target='_self' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else if (narr[i]["Type"] == "embed") {
+                myhtml += `<a target='_self' href='javascript:embed("${narr[i].Link}")' class='linksrecursos'>${narr[i].Name}</a>`;
+              } else {
+                myhtml += `<a target='_blank' href='${narr[i].Link}' class='linksrecursos'>${narr[i].Name}</a>`;
+              }
+            }
+
+            myhtml += `</div>`;
+            present(myhtml);
+          }
+        }
+      }
+
+      pendencias();
+    };
+
+    const pendencias = function () {
+      if (!rodou) {
+        if (
+          typeof $_GET["startcommand"] != "undefined" &&
+          $_GET["startcommand"] != null &&
+          $_GET["startcommand"] != ""
+        ) {
+          setinput(decodeURI($_GET["startcommand"] + " "), true);
+        }
+
+        if (
+          typeof $_GET["run"] != "undefined" &&
+          $_GET["run"] != null &&
+          $_GET["run"] != ""
+        ) {
+          clearInterval(voltaaoinput);
+          setTimeout(function () {
+            embed(selectdados[0].Link);
+          }, 600);
+        }
+
+        rodou = true;
+      }
+    };
+
+    if (
+      (typeof $_GET["nofocus"] == "undefined" ||
+        $_GET["nofocus"] == null ||
+        $_GET["nofocus"] == "") &&
+      (typeof $_GET["run"] == "undefined" ||
+        $_GET["run"] == null ||
+        $_GET["run"] == "")
+    ) {
+      document.getElementById("entrada").focus();
+    }
+  </script>
+</html>
