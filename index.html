@@ -351,6 +351,8 @@
     let rodou = false;
 
     omnifilter = function (oarr) {
+      console.table(oarr);
+
       document.getElementById("outputs").style.overflow = "auto";
       colecao = tags(oarr, "Group", ",");
       categorias = tags(oarr, "Group", ",");
