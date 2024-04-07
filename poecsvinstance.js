@@ -57,6 +57,8 @@ const startpoe = function (json, css, plugins, files) {
      
   }
 
+  console.log(files);
+
   getcsvdata(GoogleSheetCsvURL(files), function(dados) {
           cloudfiles = dados;
         });
