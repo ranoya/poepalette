@@ -328,7 +328,7 @@
       $_GET["json"] != "" &&
       $_GET["json"] != null
     ) {
-      omnifilterfetchcsvdata($_GET["json"], "entrada");
+      omnifilterfetchcsvdata(GoogleSheetCsvURL($_GET["json"]), "entrada");
     } else {
       omnifilterfetchcsvdata(
         GoogleSheetCsvURL(
