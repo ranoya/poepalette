@@ -1,6 +1,6 @@
 let games = function (par) {
         
-        fetch(`https://opensheet.elk.sh/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/List`).then(response => response.json()).then((dados) => {
+        getcsvdata(GoogleSheetCsvURL(`https://docs.google.com/spreadsheets/d/1YdEW-JTZ9W3MB_gaJ2x5svEVs5gJXfb0d_QxkPL16d4/edit#gid=0`), function(dados) {
 
             let newarr = select(dados, multipatterncheck_exclude, par);
             let xpto = `<div class="outputgrid">`;
