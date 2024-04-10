@@ -43,6 +43,7 @@ const present = function (code) {
 
 // Embed content
 const embed = function (url) {
+    clearTimeout(capturaentrada);
     document.getElementById("outputs").style.overflow = 'hidden';
     let code = `<iframe frameborder=0 src='${url}'></iframe>`;
     present(code);
