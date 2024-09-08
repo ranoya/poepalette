@@ -46,6 +46,16 @@ const toggle = function (who) {
     keymapping[80] = false;
     keymapping[16] = false;
     keymapping[17] = false;
+
+    // trata incidente
+
+    if (
+      document.getElementById("entrada").value == "o" ||
+      document.getElementById("entrada").value == "O"
+    ) {
+      document.getElementById("entrada").value = "";
+    }
+
     document.getElementById("entrada").focus();
   } else {
     document.getElementById(who).style.display = "none";
@@ -57,6 +67,15 @@ const toggle = function (who) {
     keymapping[80] = false;
     keymapping[16] = false;
     keymapping[17] = false;
+
+    // trata incidente
+
+    if (
+      document.getElementById("entrada").value == "o" ||
+      document.getElementById("entrada").value == "O"
+    ) {
+      document.getElementById("entrada").value = "";
+    }
   }
 };
 
