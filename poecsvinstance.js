@@ -47,6 +47,8 @@ const toggle = function (who) {
     keymapping[16] = false;
     keymapping[17] = false;
 
+    document.getElementById("entrada").focus();
+
     // trata incidente
 
     if (
@@ -55,8 +57,6 @@ const toggle = function (who) {
     ) {
       document.getElementById("entrada").value = "";
     }
-
-    document.getElementById("entrada").focus();
   } else {
     document.getElementById(who).style.display = "none";
     keymapping[93] = false;
