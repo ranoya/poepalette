@@ -56,9 +56,7 @@ const toggle = function (who) {
 
     document.getElementById("entrada").focus();
 
-    // trata incidente
-
-    console.log(trata);
+    // trata incidente CTRL+SHIT+O
 
     if (trata) {
       trata = false;
@@ -78,9 +76,7 @@ const toggle = function (who) {
     keymapping[16] = false;
     keymapping[17] = false;
 
-    // trata incidente
-
-    console.log(trata);
+    // trata incidente CTRL+SHIT+O
 
     if (trata) {
       trata = false;

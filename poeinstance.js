@@ -6,6 +6,8 @@ let matual = 1;
 let customcmd = [];
 let cloudfiles = [];
 
+let trata = false;
+
 var keymapping = {}; // You could also use an array
 onkeydown = onkeyup = function (e) {
   e = e || event;
@@ -20,6 +22,10 @@ onkeydown = onkeyup = function (e) {
       keymapping[75]) ||
     (keymapping[16] && keymapping[92] && keymapping[79])
   ) {
+    if (keymapping[79]) {
+      trata = true;
+    }
+
     keymapping[93] = false;
     keymapping[92] = false;
     keymapping[91] = false;
@@ -49,13 +55,13 @@ const toggle = function (who) {
 
     document.getElementById("entrada").focus();
 
-    // trata incidente
+    // trata incidente CTRL+SHIT+O
 
-    if (
-      document.getElementById("entrada").value == "o" ||
-      document.getElementById("entrada").value == "O"
-    ) {
-      document.getElementById("entrada").value = "";
+    if (trata) {
+      trata = false;
+      setInterval(function () {
+        document.getElementById("entrada").value = "";
+      }, 20);
     }
   } else {
     document.getElementById(who).style.display = "none";
@@ -68,13 +74,13 @@ const toggle = function (who) {
     keymapping[16] = false;
     keymapping[17] = false;
 
-    // trata incidente
+    // trata incidente CTRL+SHIT+O
 
-    if (
-      document.getElementById("entrada").value == "o" ||
-      document.getElementById("entrada").value == "O"
-    ) {
-      document.getElementById("entrada").value = "";
+    if (trata) {
+      trata = false;
+      setInterval(function () {
+        document.getElementById("entrada").value = "";
+      }, 20);
     }
   }
 };
