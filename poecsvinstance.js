@@ -6,6 +6,8 @@ let matual = 1;
 let customcmd = [];
 let cloudfiles = [];
 
+let trata = false;
+
 var keymapping = {}; // You could also use an array
 onkeydown = onkeyup = function (e) {
   e = e || event;
@@ -20,6 +22,10 @@ onkeydown = onkeyup = function (e) {
       keymapping[75]) ||
     (keymapping[16] && keymapping[92] && keymapping[79])
   ) {
+    if (keymapping[79]) {
+      trata = true;
+    }
+
     keymapping[93] = false;
     keymapping[92] = false;
     keymapping[91] = false;
@@ -39,11 +45,6 @@ const toggle = function (who) {
   ) {
     document.getElementById(who).style.display = "block";
 
-    let trata = false;
-    if (keymapping[79]) {
-      trata = true;
-    }
-
     keymapping[93] = false;
     keymapping[92] = false;
     keymapping[91] = false;
@@ -61,14 +62,10 @@ const toggle = function (who) {
 
     if (trata) {
       document.getElementById("entrada").value = "";
+      trata = false;
     }
   } else {
     document.getElementById(who).style.display = "none";
-
-    let trata = false;
-    if (keymapping[79]) {
-      trata = true;
-    }
 
     keymapping[93] = false;
     keymapping[92] = false;
@@ -85,6 +82,7 @@ const toggle = function (who) {
 
     if (trata) {
       document.getElementById("entrada").value = "";
+      trata = false;
     }
   }
 };
