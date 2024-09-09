@@ -38,6 +38,12 @@ const toggle = function (who) {
     document.getElementById(who).style.display == ""
   ) {
     document.getElementById(who).style.display = "block";
+
+    let trata = false;
+    if (keymapping[79]) {
+      trata = true;
+    }
+
     keymapping[93] = false;
     keymapping[92] = false;
     keymapping[91] = false;
@@ -51,19 +57,17 @@ const toggle = function (who) {
 
     // trata incidente
 
-    console.log(document.getElementById("entrada").value);
-
-    if (
-      document.getElementById("entrada").value == "o" ||
-      document.getElementById("entrada").value == "O"
-    ) {
-      console.log("sim");
+    if (trata) {
       document.getElementById("entrada").value = "";
-    } else {
-      console.log("não");
     }
   } else {
     document.getElementById(who).style.display = "none";
+
+    let trata = false;
+    if (keymapping[79]) {
+      trata = true;
+    }
+
     keymapping[93] = false;
     keymapping[92] = false;
     keymapping[91] = false;
@@ -75,16 +79,8 @@ const toggle = function (who) {
 
     // trata incidente
 
-    console.log(document.getElementById("entrada").value);
-
-    if (
-      document.getElementById("entrada").value == "o" ||
-      document.getElementById("entrada").value == "O"
-    ) {
-      console.log("sim");
+    if (trata) {
       document.getElementById("entrada").value = "";
-    } else {
-      console.log("não");
     }
   }
 };
