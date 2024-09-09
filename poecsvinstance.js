@@ -62,7 +62,9 @@ const toggle = function (who) {
 
     if (trata) {
       trata = false;
-      document.getElementById("entrada").value = "Porra!!!";
+      setInterval(function () {
+        document.getElementById("entrada").value = "";
+      }, 20);
     }
   } else {
     document.getElementById(who).style.display = "none";
@@ -82,7 +84,9 @@ const toggle = function (who) {
 
     if (trata) {
       trata = false;
-      document.getElementById("entrada").value = "Porra!!!";
+      setInterval(function () {
+        document.getElementById("entrada").value = "";
+      }, 20);
     }
   }
 };
