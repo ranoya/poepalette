@@ -51,12 +51,16 @@ const toggle = function (who) {
 
     // trata incidente
 
+    console.log(document.getElementById("entrada").value);
+
     if (
       document.getElementById("entrada").value == "o" ||
       document.getElementById("entrada").value == "O"
     ) {
       console.log("sim");
       document.getElementById("entrada").value = "";
+    } else {
+      console.log("não");
     }
   } else {
     document.getElementById(who).style.display = "none";
@@ -71,12 +75,16 @@ const toggle = function (who) {
 
     // trata incidente
 
+    console.log(document.getElementById("entrada").value);
+
     if (
       document.getElementById("entrada").value == "o" ||
       document.getElementById("entrada").value == "O"
     ) {
       console.log("sim");
       document.getElementById("entrada").value = "";
+    } else {
+      console.log("não");
     }
   }
 };
