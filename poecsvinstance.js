@@ -57,6 +57,8 @@ const toggle = function (who) {
 
     // trata incidente
 
+    console.log(trata);
+
     if (trata) {
       document.getElementById("entrada").value = "";
     }
@@ -78,6 +80,8 @@ const toggle = function (who) {
     keymapping[17] = false;
 
     // trata incidente
+
+    console.log(trata);
 
     if (trata) {
       document.getElementById("entrada").value = "";
