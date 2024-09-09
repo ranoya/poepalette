@@ -60,7 +60,7 @@ const toggle = function (who) {
 
     if (trata) {
       trata = false;
-      setInterval(function () {
+      setTimeout(function () {
         document.getElementById("entrada").value = "";
       }, 20);
     }
@@ -80,7 +80,7 @@ const toggle = function (who) {
 
     if (trata) {
       trata = false;
-      setInterval(function () {
+      setTimeout(function () {
         document.getElementById("entrada").value = "";
       }, 20);
     }
