@@ -55,6 +55,7 @@ const toggle = function (who) {
       document.getElementById("entrada").value == "o" ||
       document.getElementById("entrada").value == "O"
     ) {
+      console.log("sim");
       document.getElementById("entrada").value = "";
     }
   } else {
@@ -74,6 +75,7 @@ const toggle = function (who) {
       document.getElementById("entrada").value == "o" ||
       document.getElementById("entrada").value == "O"
     ) {
+      console.log("sim");
       document.getElementById("entrada").value = "";
     }
   }
