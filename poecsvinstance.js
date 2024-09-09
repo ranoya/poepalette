@@ -61,8 +61,8 @@ const toggle = function (who) {
     console.log(trata);
 
     if (trata) {
-      document.getElementById("entrada").value = "";
       trata = false;
+      document.getElementById("entrada").value = "Porra!!!";
     }
   } else {
     document.getElementById(who).style.display = "none";
@@ -81,8 +81,8 @@ const toggle = function (who) {
     console.log(trata);
 
     if (trata) {
-      document.getElementById("entrada").value = "";
       trata = false;
+      document.getElementById("entrada").value = "Porra!!!";
     }
   }
 };
