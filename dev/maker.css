@@ -2,7 +2,7 @@
   --bg-color: #ffbf00;
   --line-separator: #48404a;
   --text-color: #faf8d8;
-  --color-link: #a99595;
+  --color-link: #645b5b;
   --color-hover: #fbfbfb;
   --input-text: #fbfbfb;
   --scroll-track: #00078a00;
@@ -20,7 +20,7 @@
 
 a:hover {
   color: var(--color-hover, #e6be10);
-  background-color: white;
+  background-color: var(--color-link, #645b5b);
   cursor: pointer;
 }
 
