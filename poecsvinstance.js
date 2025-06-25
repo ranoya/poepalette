@@ -10,7 +10,6 @@ let trata = false;
 
 var keymapping = {}; // You could also use an array
 onkeydown = onkeyup = function (e) {
-  e.preventDefault();
   e = e || event;
   keymapping[e.keyCode] = e.type == "keydown";
 
@@ -23,6 +22,8 @@ onkeydown = onkeyup = function (e) {
       keymapping[75]) ||
     (keymapping[16] && keymapping[92] && keymapping[79])
   ) {
+    e.preventDefault();
+
     if (keymapping[79]) {
       trata = true;
     }
